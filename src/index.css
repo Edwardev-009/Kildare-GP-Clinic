@@ -1,0 +1,258 @@
+/* ============================================================
+   Kildare Clinic — Design Tokens
+   Palette taken directly from the clinic's own signage artwork:
+   near-black and gold, nothing else. Classic GP-practice feel
+   rather than a startup-SaaS look: hairline rules, restrained
+   motion, a serif for headings paired with a plain-spoken sans
+   body. "Navy" and "brass" variable names are kept for the sake
+   of a small diff, but now resolve to black and gold.
+   ============================================================ */
+
+:root {
+  --navy-950: #0a0a0b;
+  --navy-900: #111113;
+  --navy-800: #1b1b1e;
+  --navy-700: #313134;
+  --navy-100: #e9e6df;
+
+  --brass-600: #8a6d1f;
+  --brass-500: #c9a227;
+  --brass-300: #e6c358;
+  --brass-100: #f7ecc9;
+
+  --sage-600: #8a6d1f;
+  --sage-100: #f7ecc9;
+
+  --paper: #f7f5f0;
+  --paper-dim: #efece3;
+  --ink: #17181a;
+  --ink-soft: #4a4a4d;
+  --line: rgba(10, 10, 11, 0.13);
+  --line-strong: rgba(10, 10, 11, 0.26);
+
+  --font-display: "Plus Jakarta Sans", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-body: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+
+  --container: 1180px;
+  --radius-sm: 4px;
+  --radius-md: 8px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  * {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  color: var(--navy-900);
+  line-height: 1.15;
+  margin: 0;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+p {
+  margin: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+:focus-visible {
+  outline: 2px solid var(--brass-600);
+  outline-offset: 3px;
+}
+
+.container {
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 0 28px;
+}
+
+.eyebrow {
+  color: var(--brass-600);
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.85rem;
+  letter-spacing: 0.02em;
+}
+
+.section {
+  padding: 96px 0;
+}
+
+.section--tight {
+  padding: 72px 0;
+}
+
+.section--navy {
+  background: var(--navy-900);
+  color: var(--navy-100);
+}
+
+.section--navy h2, .section--navy h3 {
+  color: #fff;
+}
+
+.section--paper-dim {
+  background: var(--paper-dim);
+}
+
+.section-head {
+  max-width: 620px;
+  margin-bottom: 48px;
+}
+
+.section-head h2 {
+  font-size: clamp(1.9rem, 2.6vw, 2.5rem);
+  margin-top: 10px;
+}
+
+.section-head p {
+  margin-top: 16px;
+  color: var(--ink-soft);
+  font-size: 1.05rem;
+}
+
+.section--navy .section-head p {
+  color: var(--navy-100);
+  opacity: 0.85;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 26px;
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+  font-size: 0.98rem;
+  border: 1px solid transparent;
+  transition: transform 0.15s ease, background 0.15s ease, border-color 0.15s ease;
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+}
+
+.btn-primary {
+  background: var(--navy-900);
+  color: var(--brass-300);
+}
+
+.btn-primary:hover {
+  background: var(--navy-950);
+}
+
+.btn-ghost {
+  background: transparent;
+  border-color: var(--line-strong);
+  color: var(--navy-900);
+}
+
+.btn-ghost:hover {
+  border-color: var(--navy-900);
+}
+
+.btn-ghost--light {
+  border-color: rgba(255, 255, 255, 0.35);
+  color: #fff;
+}
+
+.btn-ghost--light:hover {
+  border-color: #fff;
+}
+
+.btn-gold {
+  background: var(--brass-500);
+  color: var(--navy-950);
+}
+
+.btn-gold:hover {
+  background: var(--brass-600);
+}
+
+.hairline {
+  border: none;
+  border-top: 1px solid var(--line);
+  margin: 0;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 14px;
+  border-radius: 999px;
+  background: var(--sage-100);
+  color: var(--sage-600);
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  background: var(--navy-900);
+  color: #fff;
+  padding: 12px 18px;
+  z-index: 200;
+}
+
+.skip-link:focus {
+  left: 16px;
+  top: 16px;
+}
+
+@media (max-width: 900px) {
+  .section {
+    padding: 64px 0;
+  }
+  .container {
+    padding: 0 20px;
+  }
+}

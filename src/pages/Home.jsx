@@ -1,0 +1,298 @@
+import {
+  Stethoscope,
+  Users,
+  Syringe,
+  ClipboardCheck,
+  MessageCircle,
+  Mail,
+  MapPin,
+  ShieldCheck,
+  Clock3,
+  ArrowRight,
+  Phone,
+} from "lucide-react";
+import { Link } from "react-router-dom";
+import GallerySlider from "../components/GallerySlider.jsx";
+import TestimonialSlider from "../components/TestimonialSlider.jsx";
+import ContactForm from "../components/ContactForm.jsx";
+import Faq from "../components/Faq.jsx";
+import Seo from "../components/Seo.jsx";
+import exteriorWide from "../assets/hero-img.webp";
+import signageClose from "../assets/signage-close.jpeg";
+import doorOpen from "../assets/door-open.jpeg";
+import reception from "../assets/reception.jpeg";
+import {
+  clinic,
+  whatsappLink,
+  services,
+  process,
+  team,
+  testimonials,
+  faqs,
+} from "../data/content.js";
+import "./Home.css";
+
+const icons = { Stethoscope, Users, Syringe, ClipboardCheck };
+
+const gallerySlides = [
+  {
+    src: exteriorWide,
+    eyebrow: "Claregate Street",
+    caption: "Easy to spot from the street — look for the black & gold signage.",
+    alt: "Kildare Clinic GP walk-in storefront and signage on Claregate Street, Kildare",
+  },
+  {
+    src: doorOpen,
+    eyebrow: "Walk-ins welcome",
+    caption: "No appointment needed — push the door and take a seat.",
+    alt: "Kildare Clinic entrance door with an 'Open, walk-ins welcome' sign",
+  },
+  {
+    src: reception,
+    eyebrow: "Inside the clinic",
+    caption: "A calm, tidy reception area just off the front door.",
+    alt: "Kildare Clinic reception desk and waiting area",
+  },
+  {
+    src: signageClose,
+    eyebrow: "Kildare Clinic",
+    caption: "Family healthcare and general practice, right in town.",
+    alt: "Close-up of the Kildare Clinic walk-in GP clinic window signage",
+  },
+];
+
+export default function Home() {
+  const faqJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqs.map((f) => ({
+      "@type": "Question",
+      name: f.question,
+      acceptedAnswer: { "@type": "Answer", text: f.answer },
+    })),
+  };
+
+  return (
+    <>
+      <Seo
+        title="GP Walk-In Medical Centre in Kildare"
+        description="Kildare Clinic is a walk-in GP practice on Claregate Street, Kildare, open 7 days a week. General practice, family healthcare, vaccinations, travel advice and chronic disease management — no referral needed."
+        path="/"
+        jsonLd={faqJsonLd}
+      />
+      {/* ---------- Hero ---------- */}
+      <section className="hero">
+        <div className="container hero__grid">
+          <div className="hero__copy">
+            <span className="badge">
+              <ShieldCheck size={15} /> Open 7 days a week
+            </span>
+            
+            <h1>
+              Walk-in GP care on Claregate Street, whenever you need it.
+            </h1>
+            {/* <p className="hero__lede">
+              Kildare Clinic is a local GP practice offering walk-in
+              consultations alongside booked appointments, general practice,
+              healthcare, vaccinations and Physio, all under one roof.
+            </p> */}
+            <div className="hero__actions">
+              <a
+                className="btn btn-gold"
+                href={whatsappLink("Hi Kildare Clinic, I'd like to book an appointment.")}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <MessageCircle size={18} /> Book an Appointment
+              </a>
+              <a className="btn btn-ghost" href={`mailto:${clinic.email}`}>
+                <Mail size={18} /> {clinic.email}
+              </a>
+            </div>
+            <a className="hero__call" href={clinic.phoneHref}>
+              <span className="hero__call__icon">
+                <Phone size={20} strokeWidth={2.2} />
+              </span>
+              <span className="hero__call__text">
+                <span className="hero__call__label">Prefer to talk? Call Us Directly</span>
+                <span className="hero__call__number">{clinic.phone}</span>
+              </span>
+              <ArrowRight className="hero__call__arrow" size={18} />
+            </a>
+
+            <div className="hero__meta">
+              <div>
+                <MapPin size={16} />
+                <span>{clinic.address}</span>
+              </div>
+              <div>
+                <Clock3 size={16} />
+                <span>Mon–Fri 9am–5pm &nbsp;·&nbsp; Sat-Sun 9am–2pm</span>
+              </div>
+            </div>
+          </div>
+
+          <div className="hero__image">
+            <img
+              src={exteriorWide}
+              alt="Kildare Clinic GP walk-in signage and storefront on Claregate Street, Kildare"
+              width="1448"
+              height="1086"
+            />
+            {/* <div className="hero__image-tag">
+              <span>Recognise us by the black &amp; gold signage</span>
+            </div> */}
+          </div>
+        </div>
+      </section>
+
+      {/* ---------- Services ---------- */}
+      <section className="section">
+        <div className="container">
+          <div className="section-head">
+            <span className="eyebrow">What we treat</span>
+            <h2>Everyday care for the whole family</h2>
+            <p>
+              From a same-day walk-in visit to ongoing management of a
+              long-term condition, our GPs and nursing team cover the care
+              most households need close to home.
+            </p>
+          </div>
+
+          <div className="services-grid">
+            {services.map((s) => {
+              const Icon = icons[s.icon];
+              return (
+                <div className="service-card" key={s.title}>
+                  <Icon size={26} strokeWidth={1.8} />
+                  <h3>{s.title}</h3>
+                  <p>{s.text}</p>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* ---------- Gallery Slider ---------- */}
+      <section className="section section--paper-dim">
+        <div className="container gallery-section">
+          <div className="section-head">
+            <span className="eyebrow">Find us</span>
+            <h2>What to expect when you visit</h2>
+            <p>
+              A quick look at our storefront and reception, so you know
+              exactly what you're walking into.
+            </p>
+          </div>
+          <GallerySlider slides={gallerySlides} />
+        </div>
+      </section>
+
+      {/* ---------- How walk-in works (custom section) ---------- */}
+      <section className="section process-section">
+        <div className="container">
+          <div className="process-section__grid">
+            <div className="section-head process-section__head">
+              <span className="eyebrow">How it works</span>
+              <h2>Four steps, no referral required</h2>
+              <p>
+                We built our walk-in system around one idea: illness rarely
+                waits for an appointment slot, so neither should you.
+              </p>
+              <Link className="btn btn-ghost" to="/contact">
+                Ask us a question <ArrowRight size={16} />
+              </Link>
+            </div>
+
+            <ol className="process-list">
+              {process.map((p) => (
+                <li key={p.step}>
+                  <span className="process-list__step">{p.step}</span>
+                  <div>
+                    <h3>{p.title}</h3>
+                    <p>{p.text}</p>
+                  </div>
+                </li>
+              ))}
+            </ol>
+          </div>
+        </div>
+      </section>
+
+      {/* ---------- Team ---------- */}
+      <section className="section section--paper-dim">
+        <div className="container">
+          <div className="section-head">
+            <span className="eyebrow">Meet the practice</span>
+            <h2>The people looking after Kildare</h2>
+            <p>A small, steady team — you'll likely see a familiar face at every visit.</p>
+          </div>
+
+          <ul className="team-grid">
+            {team.map((member) => (
+              <li className="team-card" key={member.name}>
+                <span className="team-card__initial">{member.name.charAt(0)}</span>
+                <div>
+                  <h3>{member.name}</h3>
+                  <p>{member.role}</p>
+                </div>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      {/* ---------- Testimonials ---------- */}
+      <section className="section section--navy">
+        <div className="container">
+          <div className="section-head" style={{ margin: "0 auto 56px", textAlign: "center" }}>
+            <span className="eyebrow">Patients tell it best</span>
+            <h2>Trusted by the local community</h2>
+          </div>
+          <TestimonialSlider items={testimonials} />
+        </div>
+      </section>
+
+      {/* ---------- FAQ ---------- */}
+      <section className="section">
+        <div className="container faq-section">
+          <div className="section-head">
+            <span className="eyebrow">Good to know</span>
+            <h2>Frequently asked questions</h2>
+            <p>Answers to what patients ask us most before their first visit.</p>
+          </div>
+          <Faq items={faqs} />
+        </div>
+      </section>
+
+      {/* ---------- Contact form ---------- */}
+      <section className="section contact-section">
+        <div className="container contact-section__grid">
+          <div className="section-head contact-section__head">
+            <span className="eyebrow">Get in touch</span>
+            <h2>Have a question before you visit?</h2>
+            <p>
+              Send us a message and we'll reply during clinic hours, or reach
+              us directly by phone, email or WhatsApp.
+            </p>
+            <ul className="contact-section__list">
+              <li>
+                <MapPin size={17} /> {clinic.address}
+              </li>
+              <li>
+                <Mail size={17} /> {clinic.email}
+              </li>
+              <li>
+                <MessageCircle size={17} /> WhatsApp for the fastest reply
+              </li>
+            </ul>
+          </div>
+          <div className="contact-section__form">
+            <ContactForm compact />
+          </div>
+        </div>
+      </section>
+    </>
+  );
+}
