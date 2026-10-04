@@ -103,6 +103,19 @@ Live audit on 2026-10-04: `/robots.txt` returned 200 with `text/plain`,
 `/sitemap.xml` returned 200 with `application/xml`, and `/llms.txt` returned
 404. The additions in this checkout must be deployed before they are live.
 
+## Google Analytics
+
+The shared `index.html` head contains the Google tag for measurement ID
+`G-YVVFSVJP08`. The build carries it into every prerendered page, including
+the 404 page, exactly once.
+
+For React Router navigation, enable **Enhanced measurement → Page views →
+Page changes based on browser history events** in the Analytics web data stream.
+Google's [recommended SPA measurement](https://developers.google.com/analytics/devguides/collection/ga4/single-page-applications)
+uses these history changes. No additional manual page-view events are sent,
+which avoids duplicating automatic tracking. After deployment, check page
+loads and navigation in Analytics Realtime or DebugView.
+
 ## Things to review/replace before going live
 
 - **Team names and roles** (`src/data/content.js` → `team`): confirm that the
