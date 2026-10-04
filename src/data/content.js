@@ -1,11 +1,19 @@
 // Central place for clinic details so every page stays in sync.
 // Update names, hours or copy here — it flows through the whole site.
 
+const clinicAddress = {
+  streetAddress: "Claregate Street",
+  addressLocality: "Kildare",
+  postalCode: "R51 P635",
+  addressCountry: "IE",
+};
+
 export const clinic = {
   name: "Kildare Clinic",
   tagline: "Your Health, Our Priority",
   strapline: "Local care for a healthier Kildare",
-  address: "Claregate Street, Kildare, R51 P635",
+  address: `${clinicAddress.streetAddress}, ${clinicAddress.addressLocality}, ${clinicAddress.postalCode}`,
+  structuredAddress: clinicAddress,
   phone: "085 867 8192",
   phoneHref: "tel:+353858678192",
   whatsappNumber: "353858678192",
@@ -16,31 +24,31 @@ export const clinic = {
 export const whatsappLink = (message) =>
   `https://wa.me/${clinic.whatsappNumber}?text=${encodeURIComponent(message)}`;
 
-export const hours = [
-  { day: "Monday", time: "9:00 AM – 5:00 PM" },
-  { day: "Tuesday", time: "9:00 AM – 5:00 PM" },
-  { day: "Wednesday", time: "9:00 AM – 5:00 PM" },
-  { day: "Thursday", time: "9:00 AM – 5:00 PM" },
-  { day: "Friday", time: "9:00 AM – 5:00 PM" },
-  { day: "Saturday", time: "9:00 AM – 2:00 PM" },
-  { day: "Sunday", time: "9:00 AM – 2:00 PM" },
-];
+export const openingSchedule = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].map((day, index) => ({
+  day,
+  sessions: index < 4 ? [{ opens: "10:00", closes: "14:00" }, { opens: "17:00", closes: "20:00" }] : [],
+}));
 
-const weekdays = ["Monday", "Tuesday", "Wednesday", "Thursday"];
+export function formatTime(value) {
+  const [hour, minute] = value.split(":").map(Number);
+  return `${hour % 12 || 12}:${String(minute).padStart(2, "0")} ${hour < 12 ? "AM" : "PM"}`;
+}
 
-export const hoursMorning = [
-  ...weekdays.map((day) => ({ day, time: "10:00 AM – 2:00 PM" })),
-  { day: "Friday", time: "OFF (For Now)", off: true },
-  { day: "Saturday", time: "OFF (For Now)", off: true },
-  { day: "Sunday", time: "OFF (For Now)", off: true },
-];
+export const hours = openingSchedule.map(({ day, sessions }) => ({
+  day,
+  time: sessions.length ? sessions.map(({ opens, closes }) => `${formatTime(opens)} – ${formatTime(closes)}`).join(" & ") : "OFF (For Now)",
+  off: !sessions.length,
+}));
 
-export const hoursEvening = [
-  ...weekdays.map((day) => ({ day, time: "5:00 PM – 8:00 PM" })),
-  { day: "Friday", time: "OFF (For Now)", off: true },
-  { day: "Saturday", time: "OFF (For Now)", off: true },
-  { day: "Sunday", time: "OFF (For Now)", off: true },
-];
+const shiftHours = (index) => openingSchedule.map(({ day, sessions }) => ({
+  day,
+  time: sessions[index] ? `${formatTime(sessions[index].opens)} – ${formatTime(sessions[index].closes)}` : "OFF (For Now)",
+  off: !sessions[index],
+}));
+
+export const hoursMorning = shiftHours(0);
+export const hoursEvening = shiftHours(1);
+export const hoursSummary = `Monday–Thursday: ${hours[0].time}. Friday–Sunday: closed for now.`;
 
 export const services = [
   {
@@ -125,12 +133,12 @@ export const faqs = [
   {
     question: "Do I need an appointment to see a GP at Kildare Clinic?",
     answer:
-      "No — Kildare Clinic is a walk-in practice, open seven days a week. You're welcome to arrive without booking and you'll be seen in the order you arrive. We also take booked appointments for visits that suit planning ahead, such as travel vaccinations.",
+      "No — Kildare Clinic is a walk-in practice. You're welcome to arrive without booking during opening hours and you'll be seen in the order you arrive. We also take booked appointments for visits that suit planning ahead, such as travel vaccinations.",
   },
   {
     question: "What are Kildare Clinic's opening hours?",
     answer:
-      "We're open Monday to Friday from 8:00 AM to 6:00 PM, and Saturday from 9:00 AM to 1:00 PM. We're closed on Sundays.",
+      hoursSummary,
   },
   {
     question: "Where is Kildare Clinic located?",

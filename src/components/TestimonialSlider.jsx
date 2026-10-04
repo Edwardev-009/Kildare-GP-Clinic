@@ -40,7 +40,7 @@ const perView = () => {
 
 export default function TestimonialSlider({ items }) {
   const [index, setIndex] = useState(0);
-  const [per, setPer] = useState(perView);
+  const [per, setPer] = useState(1);
   const timer = useRef(null);
 
   const maxIndex = Math.max(0, items.length - per);
@@ -48,6 +48,7 @@ export default function TestimonialSlider({ items }) {
 
   useEffect(() => {
     const onResize = () => setPer(perView());
+    onResize();
     window.addEventListener("resize", onResize);
     return () => window.removeEventListener("resize", onResize);
   }, []);

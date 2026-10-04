@@ -1,4 +1,3 @@
-import { ArrowUpRight } from "lucide-react";
 import PageHeader from "../components/PageHeader.jsx";
 import Seo from "../components/Seo.jsx";
 import { blogPosts } from "../data/content.js";
@@ -9,15 +8,11 @@ export default function Blog() {
 
   return (
     <>
-      <Seo
-        title="Health Notes & Blog"
-        description="Practical health articles from Kildare Clinic — seasonal care, travel vaccinations, chronic condition management and family health tips from our GP team."
-        path="/blog"
-      />
+      <Seo path="/blog" />
       <PageHeader
         eyebrow="From the clinic"
         title="Health notes from the Kildare Clinic team"
-        lede="Short, practical reads on the health topics our patients ask about most — seasonal care, family health and living well with a long-term condition."
+        lede="Browse short previews of topics including seasonal care, family health and living with a long-term condition."
       />
 
       <section className="section">
@@ -32,9 +27,6 @@ export default function Blog() {
                 <span className="blog-meta__divider" />
                 <span>{featured.readTime}</span>
               </div>
-              <a className="blog-read-more" href="#">
-                Read the full article <ArrowUpRight size={16} />
-              </a>
             </div>
           </article>
 

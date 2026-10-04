@@ -1,4 +1,4 @@
-import { Routes, Route, useLocation } from "react-router-dom";
+import { Routes, Route, Link, useLocation } from "react-router-dom";
 import { useEffect } from "react";
 import Header from "./components/Header.jsx";
 import Footer from "./components/Footer.jsx";
@@ -7,6 +7,18 @@ import Home from "./pages/Home.jsx";
 import About from "./pages/About.jsx";
 import Blog from "./pages/Blog.jsx";
 import Contact from "./pages/Contact.jsx";
+import Seo from "./components/Seo.jsx";
+import PageHeader from "./components/PageHeader.jsx";
+
+function NotFound() {
+  return (
+    <>
+      <Seo path="/404" />
+      <PageHeader eyebrow="404" title="Page not found" lede="The page you're looking for is unavailable." />
+      <section className="section container"><Link className="btn btn-primary" to="/">Return to the home page</Link></section>
+    </>
+  );
+}
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -30,6 +42,7 @@ export default function App() {
           <Route path="/about" element={<About />} />
           <Route path="/blog" element={<Blog />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </main>
       <Footer />
