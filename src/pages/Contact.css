@@ -65,34 +65,75 @@
   gap: 24px;
 }
 
-.contact-page__hours {
+.contact-hours {
+  margin-bottom: 56px;
+}
+
+.contact-hours__cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+  margin-top: 18px;
+}
+
+.contact-hours__card {
   background: var(--paper-dim);
+  border: 1px solid var(--line);
   border-radius: var(--radius-md);
   padding: 28px;
 }
 
-.contact-page__hours ul {
-  margin-top: 18px;
+.contact-hours__head {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  margin-bottom: 18px;
+}
+
+.contact-hours__head svg {
+  color: var(--brass-600);
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.contact-hours__head h3 {
+  font-size: 1.1rem;
+  color: var(--navy-900);
+}
+
+.contact-hours__head p {
+  font-size: 0.85rem;
+  color: var(--ink-soft);
+  margin-top: 2px;
+}
+
+.contact-hours__card ul {
   display: flex;
   flex-direction: column;
   gap: 10px;
 }
 
-.contact-page__hours li {
+.contact-hours__card li {
   display: flex;
   justify-content: space-between;
+  gap: 12px;
   font-size: 0.92rem;
   padding-bottom: 9px;
   border-bottom: 1px dashed var(--line);
 }
 
-.contact-page__hours li span:first-child {
+.contact-hours__card li span:first-child {
   font-weight: 600;
   color: var(--navy-900);
 }
 
-.contact-page__hours li span:last-child {
+.contact-hours__card li span:last-child {
   color: var(--ink-soft);
+}
+
+.contact-hours__card li.is-off span:last-child {
+  color: var(--brass-600);
+  font-weight: 600;
 }
 
 .contact-page__map {
@@ -114,7 +155,8 @@
   .contact-cards {
     grid-template-columns: 1fr 1fr;
   }
-  .contact-page__grid {
+  .contact-page__grid,
+  .contact-hours__cards {
     grid-template-columns: 1fr;
   }
 }
@@ -123,7 +165,8 @@
   .contact-cards {
     grid-template-columns: 1fr;
   }
-  .contact-page__form-wrap {
+  .contact-page__form-wrap,
+  .contact-hours__card {
     padding: 26px;
   }
 }

@@ -26,6 +26,22 @@ export const hours = [
   { day: "Sunday", time: "9:00 AM – 2:00 PM" },
 ];
 
+const weekdays = ["Monday", "Tuesday", "Wednesday", "Thursday"];
+
+export const hoursMorning = [
+  ...weekdays.map((day) => ({ day, time: "10:00 AM – 2:00 PM" })),
+  { day: "Friday", time: "OFF (For Now)", off: true },
+  { day: "Saturday", time: "OFF (For Now)", off: true },
+  { day: "Sunday", time: "OFF (For Now)", off: true },
+];
+
+export const hoursEvening = [
+  ...weekdays.map((day) => ({ day, time: "5:00 PM – 8:00 PM" })),
+  { day: "Friday", time: "OFF (For Now)", off: true },
+  { day: "Saturday", time: "OFF (For Now)", off: true },
+  { day: "Sunday", time: "OFF (For Now)", off: true },
+];
+
 export const services = [
   {
     title: "General Practice",
@@ -38,15 +54,16 @@ export const services = [
     icon: "Users",
   },
   {
-    title: "Vaccinations & Travel Advice",
-    text: "Seasonal flu jabs, routine immunisations and pre-travel consultations before you head abroad.",
-    icon: "Syringe",
+    title: "Travel Advice",
+    text: "Health guidance before you travel abroad, including advice on recommended vaccines, malaria prevention and precautions for your destination.",
+    icon: "Plane",
   },
   {
-    title: "Chronic Disease Management",
-    text: "Ongoing monitoring and support for diabetes, blood pressure, asthma and other long-term conditions.",
+    title: "Disease Management",
+    text: "Ongoing monitoring and support for diabetes, blood pressure, asthma and other long-term conditions, with regular reviews to keep your health on track.",
     icon: "ClipboardCheck",
   },
+  
 ];
 
 export const process = [
@@ -73,38 +90,34 @@ export const process = [
 ];
 
 export const team = [
-  { name: "Dr. Aoife Byrne", role: "Lead General Practitioner" },
-  { name: "Dr. Niall Fitzgerald", role: "General Practitioner" },
-  { name: "Maria Kelly", role: "Practice Nurse" },
-  { name: "Sarah O'Connor", role: "Clinic Manager" },
-  { name: "David Murphy", role: "Patient Coordinator" },
-  { name: "Emma Walsh", role: "Receptionist" },
+  { name: "Dr. S.Rasool", role: "Lead General Practitioner" },
+  { name: "Dr. Sania Batool", role: "General Practitioner" },
+  { name: "Dr. Muqadas", role: "Physiotherapist" },
+  // { name: "Sarah O'Connor", role: "Clinic Manager" },
+  // { name: "David Murphy", role: "Patient Coordinator" },
+  // { name: "Emma Walsh", role: "Receptionist" },
 ];
 
 export const testimonials = [
   {
-    quote:
-      "I was seen within twenty minutes on a walk-in visit — no fuss, and the doctor actually took the time to listen.",
-    name: "Ciara N.",
-    detail: "Kildare town",
+    name: "Bronwyn Redmond",
+    text: "I went twice and highly recommend this GPs Practice. Absolutely excellent service! My regular GP is booked out 2 weeks in advance, I work and wanted to avoid KDOC and hospital ED. I reallly appreciated the walk-in service, weekend opening,.The receptionist is very welcoming and professional, the service efficient. I was particularly impressed with Dr Haidar, the medical assessment was very thorough, he explained his findings, diagnosis and gave the appropriate trestment, discussed plan going forward. He was caring, no corners were cut or prompts needed.",
   },
   {
-    quote:
-      "Booked my travel vaccinations a week before a trip and the whole visit took less than half an hour.",
-    name: "Padraig L.",
-    detail: "Newbridge",
+    name: "Laura Keogh",
+    text: "Such a great service to have. Was give time to attend once I called and was seen quickly. Dr Rasool is such an attentive, kind and caring doctor. Highly recommend.",
   },
   {
-    quote:
-      "My father's blood pressure is checked here every month. Same nurse each time, which makes a real difference.",
-    name: "Órla M.",
-    detail: "Kildare town",
+    name: "Aislinn Mcfadden",
+    text: "Fantastic service for the community. I had a great experience , and met with a lovely doctor. Cheaper than my own GP or KDoc!",
   },
   {
-    quote:
-      "Easiest GP visit I've had in years — messaged on WhatsApp, walked in an hour later, sorted.",
-    name: "Tomás R.",
-    detail: "Monasterevin",
+    name: "Brigid O Driscoll",
+    text: "Just been to visit the Doctors.\nThis is an excellent service, very friendly receptionist.\nThe Doctor is just so lovely he actually listens and talks to you.\nWould highly recommend.",
+  },
+  {
+    name: "Maurice Whelan",
+    text: "Really great service. Dr. Rasool was very welcoming and went through everything in great detail. Would highly recommend.",
   },
 ];
 

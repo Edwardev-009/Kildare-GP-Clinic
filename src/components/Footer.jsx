@@ -1,6 +1,6 @@
 import { NavLink } from "react-router-dom";
 import { Cross, MapPin, Phone, Mail, Clock } from "lucide-react";
-import { clinic, hours } from "../data/content.js";
+import { clinic } from "../data/content.js";
 import "./Footer.css";
 
 export default function Footer() {
@@ -49,14 +49,22 @@ export default function Footer() {
 
         <div className="site-footer__col">
           <h4>Opening Hours</h4>
-          <ul className="site-footer__hours">
-            {hours.map((h) => (
-              <li key={h.day}>
-                <span>{h.day}</span>
-                <span>{h.time}</span>
-              </li>
-            ))}
-          </ul>
+          <div className="site-footer__hours">
+            <div className="site-footer__shift">
+              <h5>Morning - Opening Hours</h5>
+              <p>
+                Mon–Thu 10:00 AM – 2:00 PM <span>·</span> Fri–Sun{" "}
+                <strong>OFF</strong>
+              </p>
+            </div>
+            <div className="site-footer__shift">
+              <h5>Evening - Opening Hours</h5>
+              <p>
+                Mon–Thu 5:00 PM – 8:00 PM <span>·</span> Fri–Sun{" "}
+                <strong>OFF</strong>
+              </p>
+            </div>
+          </div>
         </div>
       </div>
 

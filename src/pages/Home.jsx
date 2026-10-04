@@ -1,7 +1,7 @@
 import {
   Stethoscope,
   Users,
-  Syringe,
+  Plane,
   ClipboardCheck,
   MessageCircle,
   Mail,
@@ -17,10 +17,10 @@ import TestimonialSlider from "../components/TestimonialSlider.jsx";
 import ContactForm from "../components/ContactForm.jsx";
 import Faq from "../components/Faq.jsx";
 import Seo from "../components/Seo.jsx";
-import exteriorWide from "../assets/hero-img.webp";
-import signageClose from "../assets/signage-close.jpeg";
-import doorOpen from "../assets/door-open.jpeg";
-import reception from "../assets/reception.jpeg";
+import heroImg from "../assets/hero-clinic-signage.webp";
+import galleryStorefront from "../assets/gallery-storefront.webp";
+import galleryReception from "../assets/gallery-reception.webp";
+import galleryWaiting from "../assets/gallery-waiting-area.webp";
 import {
   clinic,
   whatsappLink,
@@ -32,32 +32,27 @@ import {
 } from "../data/content.js";
 import "./Home.css";
 
-const icons = { Stethoscope, Users, Syringe, ClipboardCheck };
+const icons = { Stethoscope, Users, Plane, ClipboardCheck };
 
 const gallerySlides = [
   {
-    src: exteriorWide,
+    src: galleryStorefront,
     eyebrow: "Claregate Street",
     caption: "Easy to spot from the street — look for the black & gold signage.",
     alt: "Kildare Clinic GP walk-in storefront and signage on Claregate Street, Kildare",
   },
   {
-    src: doorOpen,
-    eyebrow: "Walk-ins welcome",
-    caption: "No appointment needed — push the door and take a seat.",
-    alt: "Kildare Clinic entrance door with an 'Open, walk-ins welcome' sign",
-  },
-  {
-    src: reception,
+    src: galleryReception,
+    position: "center 20%",
     eyebrow: "Inside the clinic",
     caption: "A calm, tidy reception area just off the front door.",
-    alt: "Kildare Clinic reception desk and waiting area",
+    alt: "Kildare Clinic reception desk and entrance hallway",
   },
   {
-    src: signageClose,
-    eyebrow: "Kildare Clinic",
-    caption: "Family healthcare and general practice, right in town.",
-    alt: "Close-up of the Kildare Clinic walk-in GP clinic window signage",
+    src: galleryWaiting,
+    eyebrow: "Waiting area",
+    caption: "A bright, comfortable space to sit while you wait to be seen.",
+    alt: "Kildare Clinic waiting area with seating and reception desk",
   },
 ];
 
@@ -127,17 +122,17 @@ export default function Home() {
               </div>
               <div>
                 <Clock3 size={16} />
-                <span>Mon–Fri 9am–5pm &nbsp;·&nbsp; Sat-Sun 9am–2pm</span>
+                <span>Morning: Mon–Thu 10AM–5PM &nbsp;·&nbsp; Evening: Sat-Sun 5PM–8PM</span>
               </div>
             </div>
           </div>
 
           <div className="hero__image">
             <img
-              src={exteriorWide}
-              alt="Kildare Clinic GP walk-in signage and storefront on Claregate Street, Kildare"
-              width="1448"
-              height="1086"
+              src={heroImg}
+              alt="Kildare Clinic GP walk-in signage and window display on Claregate Street, Kildare"
+              width="1369"
+              height="972"
             />
             {/* <div className="hero__image-tag">
               <span>Recognise us by the black &amp; gold signage</span>
@@ -226,7 +221,7 @@ export default function Home() {
           <div className="section-head">
             <span className="eyebrow">Meet the practice</span>
             <h2>The people looking after Kildare</h2>
-            <p>A small, steady team — you'll likely see a familiar face at every visit.</p>
+            <p>A small, steady team, you'll likely see a familiar face at every visit.</p>
           </div>
 
           <ul className="team-grid">

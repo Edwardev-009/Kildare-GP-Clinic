@@ -22,7 +22,12 @@ export default function GallerySlider({ slides }) {
       >
         {slides.map((slide, i) => (
           <figure className="gallery-slider__slide" key={i}>
-            <img src={slide.src} alt={slide.alt} loading={i === 0 ? "eager" : "lazy"} />
+            <img
+              src={slide.src}
+              alt={slide.alt}
+              loading={i === 0 ? "eager" : "lazy"}
+              style={slide.position ? { objectPosition: slide.position } : undefined}
+            />
             <figcaption>
               <span className="eyebrow">{slide.eyebrow}</span>
               <p>{slide.caption}</p>
