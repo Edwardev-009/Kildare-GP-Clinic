@@ -12,11 +12,7 @@ export default function Contact() {
 
   return (
     <>
-      <Seo
-        title="Contact"
-        description="Contact Kildare Clinic on Claregate Street, Kildare — call, email or WhatsApp the practice, or send a message using the form. Opening hours and map included."
-        path="/contact"
-      />
+      <Seo path="/contact" />
       <PageHeader
         eyebrow="Contact"
         title="Reach the clinic"

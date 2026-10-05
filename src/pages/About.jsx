@@ -10,7 +10,7 @@ const values = [
   {
     icon: Users2,
     title: "Accessible",
-    text: "Walk-ins welcome seven days a week, with no referral needed for a standard GP visit.",
+    text: "Walk-ins welcome during opening hours, with no referral needed for a standard GP visit.",
   },
   {
     icon: ShieldCheck,
@@ -27,11 +27,7 @@ const values = [
 export default function About() {
   return (
     <>
-      <Seo
-        title="About Us"
-        description="Kildare Clinic is a walk-in GP practice on Claregate Street, Kildare. Learn about our approach to accessible, professional, same-day healthcare for the local community."
-        path="/about"
-      />
+      <Seo path="/about" />
       <PageHeader
         eyebrow="About Kildare Clinic"
         title="A GP practice built around Claregate Street"

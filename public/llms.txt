@@ -1,0 +1,20 @@
+# Kildare Clinic
+
+> GP walk-in medical centre on Claregate Street, Kildare, R51 P635, Ireland. The website lists general practice, family healthcare, travel advice and disease management.
+
+Official website: https://www.kildaredoc.ie/. Call 085 867 8192 or email info@kildaredoc.ie for clinic enquiries. Contact the clinic to confirm opening hours, waiting times and service availability before travelling.
+
+The resources below are concise Markdown summaries of the public website. No individual medical advice, prices, clinician qualifications or review ratings are asserted here.
+
+## Clinic information
+
+- [Home](https://www.kildaredoc.ie/index.md): Kildare Clinic is a walk-in GP practice on Claregate Street, Kildare. General practice, family healthcare, travel advice and chronic disease management. Contact the clinic to plan your visit.
+- [About](https://www.kildaredoc.ie/about.md): Learn about Kildare Clinic, a walk-in GP practice on Claregate Street, Kildare, and its approach to healthcare for the local community.
+- [Health Notes](https://www.kildaredoc.ie/blog.md): Browse health note previews from Kildare Clinic on seasonal health, travel health, family health and long-term conditions.
+- [Contact](https://www.kildaredoc.ie/contact.md): Contact Kildare Clinic on Claregate Street, Kildare, R51 P635. Call 085 867 8192, email or WhatsApp the practice. Find contact details, opening hours and a location map.
+
+## Optional
+
+- [Combined clinic information](https://www.kildaredoc.ie/llms-full.txt): All four Markdown summaries in a single file.
+- [XML sitemap](https://www.kildaredoc.ie/sitemap.xml): Canonical public page URLs.
+- [Crawler access rules](https://www.kildaredoc.ie/robots.txt): Public crawler permissions.

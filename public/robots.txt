@@ -1,3 +1,7 @@
+# Public pages and assets are available to search and AI crawlers.
+# Search access and model-training access are distinct; the current policy allows both.
+# llms.txt: https://www.kildaredoc.ie/llms.txt
+
 User-agent: *
 Allow: /
 
@@ -7,19 +11,28 @@ Allow: /
 User-agent: Bingbot
 Allow: /
 
-User-agent: PerplexityBot
+User-agent: OAI-SearchBot
 Allow: /
 
 User-agent: ChatGPT-User
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Perplexity-User
+Allow: /
+
+User-agent: Claude-SearchBot
+Allow: /
+
+User-agent: Claude-User
 Allow: /
 
 User-agent: GPTBot
 Allow: /
 
 User-agent: ClaudeBot
-Allow: /
-
-User-agent: anthropic-ai
 Allow: /
 
 Sitemap: https://www.kildaredoc.ie/sitemap.xml

@@ -23,6 +23,7 @@ import galleryReception from "../assets/gallery-reception.webp";
 import galleryWaiting from "../assets/gallery-waiting-area.webp";
 import {
   clinic,
+  hoursSummary,
   whatsappLink,
   services,
   process,
@@ -57,30 +58,15 @@ const gallerySlides = [
 ];
 
 export default function Home() {
-  const faqJsonLd = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    mainEntity: faqs.map((f) => ({
-      "@type": "Question",
-      name: f.question,
-      acceptedAnswer: { "@type": "Answer", text: f.answer },
-    })),
-  };
-
   return (
     <>
-      <Seo
-        title="GP Walk-In Medical Centre in Kildare"
-        description="Kildare Clinic is a walk-in GP practice on Claregate Street, Kildare, open 7 days a week. General practice, family healthcare, vaccinations, travel advice and chronic disease management — no referral needed."
-        path="/"
-        jsonLd={faqJsonLd}
-      />
+      <Seo path="/" />
       {/* ---------- Hero ---------- */}
       <section className="hero">
         <div className="container hero__grid">
           <div className="hero__copy">
             <span className="badge">
-              <ShieldCheck size={15} /> Open 7 days a week
+              <ShieldCheck size={15} /> Walk-ins welcome Monday–Thursday
             </span>
             
             <h1>
@@ -122,7 +108,7 @@ export default function Home() {
               </div>
               <div>
                 <Clock3 size={16} />
-                <span>Morning: Mon–Thu 10AM–5PM &nbsp;·&nbsp; Evening: Sat-Sun 5PM–8PM</span>
+                <span>{hoursSummary}</span>
               </div>
             </div>
           </div>
