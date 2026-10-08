@@ -24,31 +24,50 @@ export const clinic = {
 export const whatsappLink = (message) =>
   `https://wa.me/${clinic.whatsappNumber}?text=${encodeURIComponent(message)}`;
 
-export const openingSchedule = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].map((day, index) => ({
-  day,
-  sessions: index < 4 ? [{ opens: "10:00", closes: "14:00" }, { opens: "17:00", closes: "20:00" }] : [],
-}));
+export const openingSchedule = [
+  { day: "Monday", sessions: [{ opens: "10:00", closes: "14:00" }] },
+  { day: "Tuesday", sessions: [{ opens: "10:00", closes: "14:00" }] },
+  { day: "Wednesday", sessions: [] },
+  { day: "Thursday", sessions: [{ opens: "16:00", closes: "20:00" }] },
+  { day: "Friday", sessions: [{ opens: "10:00", closes: "14:00" }] },
+  { day: "Saturday", sessions: [{ opens: "10:00", closes: "14:00" }] },
+  { day: "Sunday", sessions: [] },
+];
 
 export function formatTime(value) {
   const [hour, minute] = value.split(":").map(Number);
   return `${hour % 12 || 12}:${String(minute).padStart(2, "0")} ${hour < 12 ? "AM" : "PM"}`;
 }
 
+const formatSessions = (sessions) => sessions.length
+  ? sessions.map(({ opens, closes }) => `${formatTime(opens)} – ${formatTime(closes)}`).join(" & ")
+  : "OFF";
+
 export const hours = openingSchedule.map(({ day, sessions }) => ({
   day,
-  time: sessions.length ? sessions.map(({ opens, closes }) => `${formatTime(opens)} – ${formatTime(closes)}`).join(" & ") : "OFF (For Now)",
+  time: formatSessions(sessions),
   off: !sessions.length,
 }));
 
-const shiftHours = (index) => openingSchedule.map(({ day, sessions }) => ({
-  day,
-  time: sessions[index] ? `${formatTime(sessions[index].opens)} – ${formatTime(sessions[index].closes)}` : "OFF (For Now)",
-  off: !sessions[index],
-}));
+// Classify by start time so Thursday's single afternoon session stays in Evening.
+const shiftHours = (morning) => openingSchedule.map(({ day, sessions }) => {
+  const selected = sessions.filter(({ opens }) => (Number(opens.split(":")[0]) < 12) === morning);
+  return { day, time: formatSessions(selected), off: !selected.length };
+});
 
-export const hoursMorning = shiftHours(0);
-export const hoursEvening = shiftHours(1);
-export const hoursSummary = `Monday–Saturday: ${hours[0].time}. Sunday: closed for now.`;
+export const hoursMorning = shiftHours(true);
+export const hoursEvening = shiftHours(false);
+
+const groupedHours = hours.reduce((groups, row) => {
+  const previous = groups.at(-1);
+  if (previous?.time === row.time) previous.days.push(row.day);
+  else groups.push({ days: [row.day], time: row.time, off: row.off });
+  return groups;
+}, []);
+const dayRange = (days) => days.length === 1 ? days[0] : `${days[0]}–${days.at(-1)}`;
+
+export const hoursSummary = groupedHours.map(({ days, time }) => `${dayRange(days)}: ${time}.`).join(" ");
+export const openingDaysLabel = groupedHours.filter(({ off }) => !off).map(({ days }) => dayRange(days)).join(", ");
 
 export const services = [
   {

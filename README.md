@@ -60,8 +60,8 @@ so it reads at full size instead of being squeezed into a half-width column.
   breadcrumbs on inner pages and a `FAQPage` on the homepage. Services, contact
   details and hours come from the same data as the visible pages. No invented
   ratings, prices, clinician credentials or full-article schema are included.
-- Confirmed hours: Monday–Thursday, 10 AM–2 PM and 5 PM–8 PM;
-  Friday–Sunday closed for now. Edit `openingSchedule` to update the visible
+- Confirmed hours: Monday–Tuesday and Friday–Saturday, 10 AM–2 PM;
+  Thursday, 4 PM–8 PM; Wednesday and Sunday OFF. Edit `openingSchedule` to update the visible
   hours, FAQ, JSON-LD and Markdown summaries together, then rebuild.
 - `robots.txt` permits crawling of public content and assets. Its wildcard
   already covers unlisted bots; named groups explicitly cover Google, Bing,

@@ -14,4 +14,4 @@ Kildare Clinic is a local GP walk-in practice on Claregate Street, Kildare. The 
 
 ## Visiting the practice
 
-The practice welcomes walk-in visits and also describes booked appointments for visits that benefit from planning ahead. Monday–Saturday: 10:00 AM – 2:00 PM & 5:00 PM – 8:00 PM. Sunday: closed for now. Contact the clinic to confirm current opening hours, waiting times and service availability before travelling.
+The practice welcomes walk-in visits and also describes booked appointments for visits that benefit from planning ahead. Monday–Tuesday: 10:00 AM – 2:00 PM. Wednesday: OFF. Thursday: 4:00 PM – 8:00 PM. Friday–Saturday: 10:00 AM – 2:00 PM. Sunday: OFF. Contact the clinic to confirm current opening hours, waiting times and service availability before travelling.

@@ -1,8 +1,12 @@
 # Ireland website compliance: approval checklist
 
-**Prepared:** 8 October 2026  
-**Website baseline:** `91926e7` on branch `Talha`  
-**Decision status:** C01 and the cookie-information part of C03 are implemented and locally verified. The remaining owner decisions are recorded below.
+**Prepared:** 8 October 2026
+
+**Original review baseline:** `91926e7` on branch `Talha`
+
+**Current implementation baseline:** `daddd3a`, containing the previously approved cookie changes
+
+**Decision status:** C01, the cookie-information part of C03, and the owner's confirmed C06 schedule are implemented and locally verified. The remaining owner decisions are recorded below.
 
 This checklist covers the public Kildare Clinic website, including the contact and medical-certificate requests added by the latest `main`. It records observed code gaps, items requiring evidence, and conditional obligations separately. Missing evidence in this repository does not establish that a clinic procedure is absent or that a person is unqualified.
 
@@ -15,7 +19,7 @@ This checklist covers the public Kildare Clinic website, including the contact a
 | C03 | Cookies implemented; privacy deferred | Cookie/storage information and Cookie settings are available. No privacy page, form privacy notice or invented controller/provider/retention details were added. |
 | C04 | Ignore; outside the owner's scope | No health-data collection/provider/mailbox workflow changes. |
 | C05 | Ignore; outside the owner's scope | No live EmailJS test messages, delivery audit or acknowledgement-copy changes. |
-| C06 | Deferred; timings not confirmed | Keep the current opening-hours representations unchanged until a later decision. |
+| C06 | Approved; implemented and locally verified | Opening hours everywhere derive from the confirmed shared schedule: Monday–Tuesday 10:00 AM–2:00 PM; Wednesday OFF; Thursday 4:00 PM–8:00 PM; Friday–Saturday 10:00 AM–2:00 PM; Sunday OFF. |
 | C07 | Confirmed by owner | Keep the existing certificate fees, timing and workflow wording. No independent operational/provider verification is claimed. |
 | C08 | Owner states reviews are from Google and there are 51 ratings | Record this statement. Keep the five published testimonials and their existing presentation; do not invent individual ratings, a new aggregate score or review links. |
 | C09 | Verified by owner | Keep the existing team, service/marketing copy and blog previews. No independent clinical/registration review is claimed. |
@@ -24,6 +28,33 @@ This checklist covers the public Kildare Clinic website, including the contact a
 | C13–C15 | Ignore conditional obligations | No accessibility-law, company-disclosure, DPIA/DPO or broader clinic-procedure implementation. |
 
 Owner confirmations above are recorded as supplied; they are separate from source observations and independent verification. An ignored/deferred item is a scope decision, not a finding that an obligation is satisfied or inapplicable.
+
+## Approved opening-hours update — C06
+
+The owner's latest instruction supersedes the earlier decision to defer C06. The confirmed schedule is:
+
+| Days | Opening hours |
+| --- | --- |
+| Monday–Tuesday | 10:00 AM–2:00 PM |
+| Wednesday | OFF |
+| Thursday | 4:00 PM–8:00 PM |
+| Friday–Saturday | 10:00 AM–2:00 PM |
+| Sunday | OFF |
+
+`openingSchedule` in `src/data/content.js` is the shared source. The daily tables, Morning/Evening table columns, grouped `hoursSummary` and Home's opening-days badge derive from it. Thursday's 4:00 PM start belongs in the Evening column even though it is that day's only session. The schedule also propagates to the About/Contact/Footer opening-hours displays, opening-hours FAQ, `openingHoursSpecification` structured data and generated Markdown/discovery summaries. The production build regenerated the public discovery files and prerendered pages from this source.
+
+Only the approved opening days/times and their dependent displays were changed. Certificate turnaround claims, service wording, contact information and all earlier excluded/deferred decisions remain as recorded above.
+
+### Verification of the latest hours update
+
+- A literal seven-day expectation check passed against the owner's supplied times, including Thursday Morning OFF / Evening 4:00 PM–8:00 PM and Wednesday/Sunday OFF.
+- `npm run build` and `npm run check:seo` passed for all six routes and the 404 page; visible text, JSON-LD and generated discovery files use the new schedule.
+- `npm run check:seo:http -- http://127.0.0.1:4174` passed for pages, discovery files and HTTP 404.
+- Six targeted desktop/mobile browser inspections passed across Home, Contact and About, including the Home badge/table, Contact shift cards, About list, footer, opened hours FAQ and structured data. No horizontal overflow, page errors or hydration errors. No real external/provider requests were made; the fresh cookie choices still blocked Analytics/Maps.
+- Searches found no old opening hours in application source or generated public/build pages. Historical observations below remain labelled as historical.
+- Full lint reported the three existing Header warnings plus an unused import made obsolete by updating the old hours assertion. That import was removed; targeted lint then passed for every changed source/check file. No unrelated Header edits were made.
+
+The earlier cookie tests below were not rerun as a full suite for this hours-only change. No push or deployment is included in C06.
 
 ## Approved cookie implementation
 
@@ -39,9 +70,9 @@ Owner confirmations above are recorded as supplied; they are separate from sourc
 
 References: [DPC cookies/tracking guidance — PDF attachment](https://www.dataprotection.ie/sites/default/files/uploads/2020-04/Guidance%20note%20on%20cookies%20and%20other%20tracking%20technologies.pdf), [Google cookie information](https://policies.google.com/technologies/cookies), [Google tag cookies](https://developers.google.com/tag-platform/security/concepts/cookies), [Google cookie expiry settings](https://developers.google.com/tag-platform/security/guides/customize-cookies) and [Google Privacy Policy](https://policies.google.com/privacy).
 
-### Verification of this scoped implementation
+### Historical verification of the cookie implementation, before C06
 
-The final integrated tree was checked on 8 October 2026:
+The previously approved cookie implementation was checked on 8 October 2026, before the latest C06 schedule update:
 
 - `npm run test:consent`: **6 tests passed**, covering strict purpose flags, invalid/future/expired choices, storage failures, selective GA cookie cleanup, duplicate-script prevention and withdrawal while the script is pending.
 - `scripts/check-cookie-consent-browser.mjs`: **12 scenarios passed** using bundled Playwright. Covered initial/rejected requests, independent analytics/maps choices, acceptance/withdrawal, persisted choices, invalid/expired choices, expiry in an open tab, cross-tab rejection/clearing, blocked storage methods/getter, desktop/mobile layout and preserved clinic content. No page or hydration errors.
@@ -49,7 +80,7 @@ The final integrated tree was checked on 8 October 2026:
 - `npm run build`: passed, including all six public routes and the 404 page.
 - `npm run check:seo` and `npm run check:seo:http -- http://127.0.0.1:4174`: passed, including `/cookies`, generated discovery parity and the actual HTTP 404.
 - `npm run lint`: passed with the same **three existing Header warnings**; no new warnings from the cookie implementation.
-- Source comparison confirms team/reviews/blogs, certificate offerings/copy, opening hours, fonts, existing sliders and certificate-modal behaviour were preserved. The only Contact form source change is the deferred EmailJS import described above.
+- At that verification point, source comparison confirmed team/reviews/blogs, certificate offerings/copy, opening hours, fonts, existing sliders and certificate-modal behaviour were preserved. Opening hours are now separately authorised to change under C06. The only Contact form source change in the cookie work was the deferred EmailJS import described above.
 
 The browser script accepts a `KILDARE_PLAYWRIGHT_MODULE` path for the bundled Playwright runtime, or uses an installed `playwright` module. No dependency was added for these browser checks.
 
@@ -67,7 +98,7 @@ No live EmailJS messages, clinical requests, certificate issuance, payment trans
 
 ## Original proposals and baseline observations
 
-The proposals below preserve the baseline review and its reference links. Their unchecked boxes are historical proposal markers, not the current approval status; the owner-decision table above is authoritative. Only C01 and C03's cookie portion are authorised for implementation. No review authorises deleting a feature or changing business facts.
+The proposals below preserve the original baseline review and its reference links. Their unchecked boxes are historical proposal markers, not the current approval status; the owner-decision table above is authoritative. C01, C03's cookie portion and the confirmed C06 schedule update are authorised for implementation. No review authorises deleting a feature or changing other business facts.
 
 ### Privacy, tracking and request handling
 
@@ -83,7 +114,7 @@ The proposals below preserve the baseline review and its reference links. Their 
 
 ### Published information and service claims
 
-- [ ] **C06 — Resolve opening-hours inconsistency after confirmation.** **Confirmed mismatch:** `hoursSummary` and Home's hard-coded walk-in badge say Monday–Saturday; `openingSchedule` opens Monday–Thursday and closes Friday–Sunday. Tables and structured data use the latter. Proposed: obtain the authoritative days/sessions, then synchronise text, the Home badge, tables, FAQs, schema and discovery summaries. Keep current times/contact details until confirmation. Basis: accurate practice information in [Medical Council guide, section 50 — PDF attachment](https://www.medicalcouncil.ie/news-and-publications/publications/guide-to-professional-conduct-and-ethics-for-registered-medical-practitioners-2024.pdf).
+- [ ] **C06 — Resolve opening-hours inconsistency after confirmation.** **Historical baseline mismatch, superseded by the approved schedule above:** the original `hoursSummary` and Home's hard-coded walk-in badge said Monday–Saturday; `openingSchedule` opened Monday–Thursday and closed Friday–Sunday. Tables and structured data used the latter. The original proposal was to obtain authoritative days/sessions before synchronising text, the Home badge, tables, FAQs, schema and discovery summaries. The owner has now supplied that schedule and approved the update. Contact details remain unchanged. Basis: accurate practice information in [Medical Council guide, section 50 — PDF attachment](https://www.medicalcouncil.ie/news-and-publications/publications/guide-to-professional-conduct-and-ethics-for-registered-medical-practitioners-2024.pdf).
 
 - [ ] **C07 — Verify certificate fees, timing and clinical workflow; correct only agreed wording.** **Needs owner evidence:** the new page advertises €30/€40 fees, “Within 5 hours”, Irish-registered GP review, payment links and secure email delivery. Confirm eligibility, clinical review, registration-number handling on issued certificates, turnaround start point/opening hours, payment provider, refusal/refund handling and recipient acceptance claims. The website does not itself issue certificates or process card payments. Keep the page, services and prices unless a specific correction is approved. Any approved correction must also cover the repeated SEO/discovery text. Basis: [Medical Council guide, sections 37, 50 and 52 — PDF attachment](https://www.medicalcouncil.ie/news-and-publications/publications/guide-to-professional-conduct-and-ethics-for-registered-medical-practitioners-2024.pdf).
 
@@ -117,7 +148,7 @@ The proposals below preserve the baseline review and its reference links. Their 
 | Headlines and service copy | Preserve existing wording, staffing references, walk-in/booking and reply promises until a specific C07/C09/C05 correction is approved. |
 | Certificate service | Keep the route, navigation, four offerings, prices, request modal and EmailJS flow brought in by `main`. Review proposals do not authorise removing them. |
 | Contact routes | Keep phone, email, WhatsApp links, address and booking actions. No substitution with disabled buttons or an unsending form. |
-| Opening hours | Keep both current representations until the clinic confirms which is correct, then apply only the approved C06 correction. |
+| Opening hours | Apply the confirmed C06 schedule and synchronise its dependent displays. Do not retain the superseded inconsistent hours or change the confirmed schedule without a new owner instruction. |
 | Branding and layout | Keep palette, fonts, photographs, page layout and sliders. Accessibility improvements must retain the design unless a visual change is agreed. |
 | External features | Keep Maps and GA4 capability. Approved C01 changes when those optional services load and permits visitor withdrawal. Fonts remain unchanged. |
 | SEO / discovery | Keep existing routes, canonical URLs, prerendering and discovery behaviour; coordinate generated content only with an approved factual change. |
@@ -128,12 +159,11 @@ The earlier work hid team profiles, testimonials and blog previews; removed thei
 ## Information needed before dependent changes
 
 1. Legal operator/controller identity and privacy contact; company details if applicable.
-2. Authoritative opening days and sessions: Monday–Thursday or Monday–Saturday, or another confirmed schedule.
-3. EmailJS/email/hosting/WhatsApp/payment providers, their roles and countries; actual access, retention and security arrangements.
-4. Approved basis/condition for ordinary and health-data processing, and the minimum information required for each request.
-5. Certificate fees, turnaround conditions, clinical assessment/issuance process, payment and refusal/refund handling.
-6. Review sources/ratings and confirmed professional/service/clinical-content facts.
-7. Clinic size and service scope for conditional accessibility/DPO/DPIA assessments.
+2. EmailJS/email/hosting/WhatsApp/payment providers, their roles and countries; actual access, retention and security arrangements.
+3. Approved basis/condition for ordinary and health-data processing, and the minimum information required for each request.
+4. Certificate fees, turnaround conditions, clinical assessment/issuance process, payment and refusal/refund handling.
+5. Review sources/ratings and confirmed professional/service/clinical-content facts.
+6. Clinic size and service scope for conditional accessibility/DPO/DPIA assessments.
 
 Only information relevant to the IDs you select needs to be supplied before those changes. Do not send patient records or credentials for this review.
 
@@ -143,11 +173,11 @@ The owner decisions above define this implementation. Any later approval should 
 
 After approval, implement only the agreed IDs and necessary supporting changes, record the exact scope, and verify the resulting website. If a new concern arises, add it as another pending proposal. No additional intuition-based content filtering or copy rewrite.
 
-Current local verification of the restored/pulled baseline:
+Historical local verification of the restored/pulled `91926e7` baseline, before the approved cookie and C06 changes:
 
 - Locked dependencies installed with `npm ci`; no package/lock changes requested.
 - Production/prerender build passed for all five public routes and the 404 page.
-- `npm run check:seo` passed, including metadata/schema/assets and generated discovery parity. This checks consistency with source; it does not resolve the opening-hours contradiction.
+- `npm run check:seo` passed, including metadata/schema/assets and generated discovery parity. This checked consistency with that baseline source; it did not resolve its opening-hours contradiction, which is now addressed separately by approved C06.
 - `npm run lint` exited successfully with three existing warnings in `src/components/Header.jsx` (effect state/dependencies).
 - `npm run check:seo:http -- http://127.0.0.1:4174` passed for all five routes, discovery files and the actual HTTP 404. The temporary verification server was stopped afterward.
 - No live EmailJS messages, clinical requests, certificate issuance, payment transactions, provider setting changes or deployment were performed. These local checks are not legal certification or live-provider acceptance.

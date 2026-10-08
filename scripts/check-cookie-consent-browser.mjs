@@ -1,9 +1,10 @@
 import assert from "node:assert/strict";
-import { mkdtemp, readFile } from "node:fs/promises";
+import { mkdtemp } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { pathToFileURL } from "node:url";
 import { CONSENT_KEY, CONSENT_LIFETIME_MS, createPreferences } from "../src/lib/cookie-consent.js";
+import { openingSchedule, hoursMorning, hoursEvening } from "../src/data/content.js";
 
 // Supply KILDARE_PLAYWRIGHT_MODULE for a bundled runtime; do not add a production dependency.
 const modulePath = process.env.KILDARE_PLAYWRIGHT_MODULE;
@@ -358,10 +359,18 @@ try {
     await context.close();
   });
 
-  await check("deferred opening-hours source remains unchanged", async () => {
-    const content = await readFile(new URL("../src/data/content.js", import.meta.url), "utf8");
-    assert.match(content, /sessions: index < 4/);
-    assert.match(content, /Monday–Saturday:/);
+  await check("confirmed opening hours match the approved seven-day schedule", async () => {
+    assert.deepEqual(openingSchedule, [
+      { day: "Monday", sessions: [{ opens: "10:00", closes: "14:00" }] },
+      { day: "Tuesday", sessions: [{ opens: "10:00", closes: "14:00" }] },
+      { day: "Wednesday", sessions: [] },
+      { day: "Thursday", sessions: [{ opens: "16:00", closes: "20:00" }] },
+      { day: "Friday", sessions: [{ opens: "10:00", closes: "14:00" }] },
+      { day: "Saturday", sessions: [{ opens: "10:00", closes: "14:00" }] },
+      { day: "Sunday", sessions: [] },
+    ]);
+    assert.equal(hoursMorning.find(({ day }) => day === "Thursday").off, true);
+    assert.equal(hoursEvening.find(({ day }) => day === "Thursday").time, "4:00 PM – 8:00 PM");
   });
   assert.deepEqual(allErrors, [], "No page errors or hydration failures");
   assert.deepEqual(emailJsChunks, [], "EmailJS remains lazy-loaded until form submission; tests never submit forms");
