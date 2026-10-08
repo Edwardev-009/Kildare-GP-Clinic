@@ -1,0 +1,43 @@
+.cookie-panel {
+  position: fixed;
+  inset: auto 16px 16px;
+  z-index: 400;
+  max-width: 1150px;
+  max-height: calc(100dvh - 32px);
+  margin: 0 auto;
+  overflow: auto;
+  background: var(--paper);
+  color: var(--ink);
+  border: 1px solid var(--line-strong);
+  border-top: 4px solid var(--brass-500);
+  border-radius: var(--radius-md);
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.24);
+}
+.cookie-panel__body { padding: 22px 26px; }
+.cookie-panel h2 { font-size: 1.25rem; margin-bottom: 10px; }
+.cookie-panel p { font-size: 0.9rem; line-height: 1.6; }
+.cookie-panel a { text-decoration: underline; text-underline-offset: 3px; }
+.cookie-panel__actions { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 16px; }
+.cookie-panel__choice {
+  padding: 11px 16px;
+  border: 1px solid var(--navy-900);
+  border-radius: var(--radius-sm);
+  background: var(--navy-900);
+  color: white;
+  font: inherit;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+.cookie-panel__choice:hover { background: var(--navy-700); }
+.cookie-panel__close { padding: 10px; border: 0; background: transparent; color: var(--ink); text-decoration: underline; }
+.cookie-panel__options { display: grid; gap: 14px; margin-top: 18px; }
+.cookie-panel__options label { display: flex; align-items: flex-start; gap: 12px; cursor: pointer; }
+.cookie-panel__options input { margin-top: 5px; width: 18px; height: 18px; accent-color: var(--navy-900); flex-shrink: 0; }
+.cookie-panel__options small { display: block; font-size: 0.88rem; }
+.cookie-panel button:focus-visible, .cookie-panel a:focus-visible { outline: 3px solid var(--brass-600); outline-offset: 3px; }
+.cookie-session-note { position: fixed; bottom: 0; left: 0; right: 0; z-index: 401; background: var(--navy-900); color: white; font-size: 0.8rem; text-align: center; padding: 8px; }
+@media (max-width: 560px) {
+  .cookie-panel { inset: auto 8px 8px; max-height: calc(100dvh - 16px); }
+  .cookie-panel__body { padding: 18px; }
+  .cookie-panel__choice { flex: 1 1 130px; }
+}

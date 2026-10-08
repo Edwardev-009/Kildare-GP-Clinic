@@ -13,6 +13,7 @@ The resources below are concise Markdown summaries of the public website. No ind
 - [Health Notes](https://www.kildaredoc.ie/blog.md): Browse health note previews from Kildare Clinic on seasonal health, travel health, family health and long-term conditions.
 - [Medical Certificate](https://www.kildaredoc.ie/medical-certificate.md): Request a sick, unfit for travel, fit to travel or return-to-work medical certificate from Irish-registered GPs at Kildare Clinic. From €30, issued within 5 hours.
 - [Contact](https://www.kildaredoc.ie/contact.md): Contact Kildare Clinic on Claregate Street, Kildare, R51 P635. Call 085 867 8192, email or WhatsApp the practice. Find contact details, opening hours and a location map.
+- [Cookies](https://www.kildaredoc.ie/cookies.md): Learn about Kildare Clinic’s cookie choices, optional Google Analytics and Maps, browser storage and how to change or withdraw your choice.
 
 ## Optional
 

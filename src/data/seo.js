@@ -40,6 +40,13 @@ export const pages = [
     description: "Contact Kildare Clinic on Claregate Street, Kildare, R51 P635. Call 085 867 8192, email or WhatsApp the practice. Find contact details, opening hours and a location map.",
     type: "ContactPage",
   },
+  {
+    path: "/cookies",
+    label: "Cookies",
+    title: "Cookies and Browser Storage",
+    description: "Learn about Kildare Clinic’s cookie choices, optional Google Analytics and Maps, browser storage and how to change or withdraw your choice.",
+    type: "WebPage",
+  },
 ];
 
 export function pageSeo(path) {

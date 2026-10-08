@@ -27,6 +27,7 @@ import {
   clinic,
   hoursMorning,
   hoursEvening,
+  openingDaysLabel,
   whatsappLink,
   services,
   process,
@@ -69,7 +70,7 @@ export default function Home() {
         <div className="container hero__grid">
           <div className="hero__copy">
             <span className="badge">
-              <ShieldCheck size={15} /> Walk-ins welcome Monday–Saturday
+              <ShieldCheck size={15} /> Walk-ins welcome {openingDaysLabel}
             </span>
             
             <h1>

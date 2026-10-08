@@ -2,6 +2,7 @@ import { MapPin, Phone, Mail, MessageCircle, Clock3, Sunrise, Sunset } from "luc
 import PageHeader from "../components/PageHeader.jsx";
 import Seo from "../components/Seo.jsx";
 import ContactForm from "../components/ContactForm.jsx";
+import ConsentMap from "../components/ConsentMap.jsx";
 import { clinic, hoursMorning, hoursEvening, whatsappLink } from "../data/content.js";
 import "./Contact.css";
 
@@ -96,7 +97,7 @@ export default function Contact() {
 
             <div className="contact-page__side">
               <div className="contact-page__map">
-                <iframe
+                <ConsentMap
                   title="Kildare Clinic location"
                   src={mapSrc}
                   loading="lazy"

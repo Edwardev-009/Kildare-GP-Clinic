@@ -32,7 +32,7 @@ Ongoing monitoring and support for diabetes, blood pressure, asthma and other lo
 
 ## Plan a visit
 
-Walk in or call ahead. Register at the front desk, see the doctor and discuss the next steps for your care. Monday–Saturday: 10:00 AM – 2:00 PM & 5:00 PM – 8:00 PM. Sunday: closed for now. Contact the clinic to confirm current opening hours, waiting times and service availability before travelling.
+Walk in or call ahead. Register at the front desk, see the doctor and discuss the next steps for your care. Monday–Tuesday: 10:00 AM – 2:00 PM. Wednesday: OFF. Thursday: 4:00 PM – 8:00 PM. Friday–Saturday: 10:00 AM – 2:00 PM. Sunday: OFF. Contact the clinic to confirm current opening hours, waiting times and service availability before travelling.
 
 ## Location question
 

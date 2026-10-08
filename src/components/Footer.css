@@ -25,6 +25,32 @@
   max-width: 320px;
 }
 
+.site-footer__social {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 22px;
+}
+
+.site-footer__social a {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 12px;
+  border: 1px solid rgba(230, 195, 88, 0.35);
+  border-radius: var(--radius-sm);
+}
+
+.site-footer__social svg {
+  color: var(--brass-300);
+  flex-shrink: 0;
+}
+
+.site-footer__social a:hover {
+  background: rgba(230, 195, 88, 0.08);
+  border-color: var(--brass-300);
+}
+
 .site-footer h4 {
   color: #fff;
   font-size: 1.02rem;
@@ -111,6 +137,10 @@
   font-size: 1rem;
   color: rgba(255, 255, 255, 0.5);
 }
+
+.site-footer__cookies { display: flex; flex-wrap: wrap; gap: 16px; align-items: center; }
+.site-footer__cookies a, .site-footer__cookies button { color: rgba(255, 255, 255, 0.8); text-decoration: underline; text-underline-offset: 3px; font: inherit; }
+.site-footer__cookies button { background: transparent; border: 0; padding: 0; }
 
 @media (max-width: 900px) {
   .site-footer__grid {

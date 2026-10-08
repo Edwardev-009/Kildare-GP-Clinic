@@ -8,6 +8,8 @@ import About from "./pages/About.jsx";
 import Blog from "./pages/Blog.jsx";
 import Contact from "./pages/Contact.jsx";
 import MedicalCertificate from "./pages/MedicalCertificate.jsx";
+import CookiePolicy from "./pages/CookiePolicy.jsx";
+import { CookieConsentProvider } from "./components/CookieConsent.jsx";
 import Seo from "./components/Seo.jsx";
 import PageHeader from "./components/PageHeader.jsx";
 
@@ -31,7 +33,7 @@ function ScrollToTop() {
 
 export default function App() {
   return (
-    <>
+    <CookieConsentProvider>
       <a href="#main" className="skip-link">
         Skip to main content
       </a>
@@ -44,11 +46,12 @@ export default function App() {
           <Route path="/blog" element={<Blog />} />
           <Route path="/medical-certificate" element={<MedicalCertificate />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/cookies" element={<CookiePolicy />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </main>
       <Footer />
       <WhatsAppFab />
-    </>
+    </CookieConsentProvider>
   );
 }
