@@ -2,9 +2,13 @@
 
 Source: https://www.kildaredoc.ie/blog
 
-The blog page currently contains article titles and short previews. Full articles and individual article URLs are not available. These previews should not be presented as complete, medically reviewed guidance.
+## Complete appointment guide
+
+[Kildare physio: a guide to your first appointment](https://www.kildaredoc.ie/blog/kildare-physio-first-appointment): A practical guide to choosing a physiotherapy appointment, preparing for your visit and asking the right questions at Kildare Clinic. Published 9 October 2026. General information; no clinician review is asserted.
 
 ## Preview topics
+
+The following entries are short previews, not complete or medically reviewed articles.
 
 - Do you need the flu vaccine this year? (Seasonal Health).
 - Planning a trip abroad? Book your travel consultation early (Travel Health).

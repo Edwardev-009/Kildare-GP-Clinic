@@ -129,3 +129,8 @@
     grid-template-columns: 1fr;
   }
 }
+.about-team { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 24px; }
+.about-team li { border: 1px solid var(--line); border-radius: var(--radius-md); padding: 28px; }
+.about-team h3 { font-size: 1.2rem; margin-bottom: 12px; }
+.about-team p { color: var(--ink-soft); }
+.about-team a { display: inline-block; margin-top: 18px; text-decoration: underline; text-underline-offset: 4px; }

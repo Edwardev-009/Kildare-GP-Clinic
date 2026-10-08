@@ -1,9 +1,10 @@
 import { HeartHandshake, ShieldCheck, Users2, MessageCircle, MapPin, Clock3 } from "lucide-react";
 import PageHeader from "../components/PageHeader.jsx";
 import Seo from "../components/Seo.jsx";
+import { Link } from "react-router-dom";
 import reception from "../assets/reception.jpeg";
 import doorOpen from "../assets/door-open.jpeg";
-import { clinic, hours, whatsappLink } from "../data/content.js";
+import { clinic, hours, whatsappLink, team } from "../data/content.js";
 import "./About.css";
 
 const values = [
@@ -30,7 +31,7 @@ export default function About() {
       <Seo path="/about" />
       <PageHeader
         eyebrow="About Kildare Clinic"
-        title="A GP practice built around Claregate Street"
+        title="Your GP practice in Kildare Town"
         lede="We opened Kildare Clinic to give the town a walk-in option for everyday healthcare — no long booking queues, no six-week wait for a routine concern."
       />
 
@@ -89,6 +90,15 @@ export default function About() {
       </section>
 
       {/* ---------- Hours + Map ---------- */}
+      <section className="section">
+        <div className="container">
+          <div className="section-head"><span className="eyebrow">Meet the practice</span><h2>Our GP and physiotherapy team</h2><p>Meet the people listed on our clinic team, based on Claregate Street in Kildare.</p></div>
+          <ul className="about-team">
+            {team.map((member) => <li key={member.name}><h3>{member.name}</h3><p>{member.role}</p>{member.role === "Physiotherapist" && <Link to="/physiotherapy">Physiotherapy appointments in Kildare</Link>}</li>)}
+          </ul>
+        </div>
+      </section>
+
       <section className="section">
         <div className="container about-visit">
           <div className="about-visit__image">

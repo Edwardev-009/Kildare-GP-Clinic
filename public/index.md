@@ -30,6 +30,10 @@ Health guidance before you travel abroad, including advice on recommended vaccin
 
 Ongoing monitoring and support for diabetes, blood pressure, asthma and other long-term conditions, with regular reviews to keep your health on track.
 
+### Physiotherapy
+
+Physiotherapy with Muqadas at our Claregate Street clinic. Contact reception to discuss your needs and arrange an appointment during clinic hours.
+
 ## Plan a visit
 
 Walk in or call ahead. Register at the front desk, see the doctor and discuss the next steps for your care. Monday–Tuesday: 10:00 AM – 2:00 PM. Wednesday: OFF. Thursday: 4:00 PM – 8:00 PM. Friday–Saturday: 10:00 AM – 2:00 PM. Sunday: OFF. Contact the clinic to confirm current opening hours, waiting times and service availability before travelling.

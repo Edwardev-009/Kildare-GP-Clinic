@@ -31,6 +31,8 @@ for (const page of [...pages, { path: "/404" }]) {
 
 for (const [name, content] of Object.entries(discoveryFiles())) {
   // Also refresh public/ so development and the deployed build use the same files.
+  await mkdir(dirname(resolve("public", name)), { recursive: true });
+  await mkdir(dirname(resolve("dist", name)), { recursive: true });
   await writeFile(resolve("public", name), content);
   await writeFile(resolve("dist", name), content);
 }

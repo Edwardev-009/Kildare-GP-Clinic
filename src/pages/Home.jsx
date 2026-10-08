@@ -12,6 +12,7 @@ import {
   Sunset,
   ArrowRight,
   Phone,
+  Activity,
 } from "lucide-react";
 import { Link } from "react-router-dom";
 import GallerySlider from "../components/GallerySlider.jsx";
@@ -37,7 +38,7 @@ import {
 } from "../data/content.js";
 import "./Home.css";
 
-const icons = { Stethoscope, Users, Plane, ClipboardCheck };
+const icons = { Stethoscope, Users, Plane, ClipboardCheck, Activity };
 
 const gallerySlides = [
   {
@@ -74,13 +75,14 @@ export default function Home() {
             </span>
             
             <h1>
-              Walk-in GP care on Claregate Street.
+              Walk-in GP in Kildare Town.
             </h1>
-            {/* <p className="hero__lede">
-              Kildare Clinic is a local GP practice offering walk-in
-              consultations alongside booked appointments, general practice,
-              healthcare, vaccinations and Physio, all under one roof.
-            </p> */}
+            <p className="hero__lede">
+              Kildare Clinic provides GP consultations and family healthcare on
+              Claregate Street, Kildare, R51 P635. Walk in during opening hours
+              or call ahead to plan your visit. <Link to="/physiotherapy">Physiotherapy appointments</Link> are
+              also available at the clinic.
+            </p>
             <div className="hero__actions">
               <a
                 className="btn btn-gold"
@@ -146,6 +148,8 @@ export default function Home() {
               alt="Kildare Clinic GP walk-in signage and window display on Claregate Street, Kildare"
               width="1369"
               height="972"
+              fetchPriority="high"
+              decoding="async"
             />
             {/* <div className="hero__image-tag">
               <span>Recognise us by the black &amp; gold signage</span>
@@ -159,7 +163,7 @@ export default function Home() {
         <div className="container">
           <div className="section-head">
             <span className="eyebrow">What we treat</span>
-            <h2>Everyday care for the whole family</h2>
+            <h2>GP services and physiotherapy in Kildare</h2>
             <p>
               From a same-day walk-in visit to ongoing management of a
               long-term condition, our GPs and nursing team cover the care
@@ -175,6 +179,7 @@ export default function Home() {
                   <Icon size={26} strokeWidth={1.8} />
                   <h3>{s.title}</h3>
                   <p>{s.text}</p>
+                  {s.path && <Link className="service-card__link" to={s.path}>Physiotherapy in Kildare <ArrowRight size={16} /></Link>}
                 </div>
               );
             })}

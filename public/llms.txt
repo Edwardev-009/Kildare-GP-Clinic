@@ -8,9 +8,11 @@ The resources below are concise Markdown summaries of the public website. No ind
 
 ## Clinic information
 
-- [Home](https://www.kildaredoc.ie/index.md): Kildare Clinic is a walk-in GP practice on Claregate Street, Kildare. General practice, family healthcare, travel advice and chronic disease management. Contact the clinic to plan your visit.
+- [Home](https://www.kildaredoc.ie/index.md): Looking for a GP in Kildare? Visit Kildare Clinic on Claregate Street for walk-in GP care, family healthcare and physio appointments. Call 085 867 8192.
 - [About](https://www.kildaredoc.ie/about.md): Learn about Kildare Clinic, a walk-in GP practice on Claregate Street, Kildare, and its approach to healthcare for the local community.
-- [Health Notes](https://www.kildaredoc.ie/blog.md): Browse health note previews from Kildare Clinic on seasonal health, travel health, family health and long-term conditions.
+- [Health Notes](https://www.kildaredoc.ie/blog.md): Read Kildare Clinic's first physio appointment guide and browse health note previews on family health, seasonal care and long-term conditions.
+- [Physiotherapy](https://www.kildaredoc.ie/physiotherapy.md): Physiotherapy with Muqadas at Kildare Clinic on Claregate Street, Kildare Town. Call the clinic to discuss your needs and arrange a physio appointment.
+- [First physio appointment](https://www.kildaredoc.ie/blog/kildare-physio-first-appointment.md): Looking for a physio in Kildare? Learn how to prepare for your first appointment, what to ask and how to contact Kildare Clinic on Claregate Street.
 - [Medical Certificate](https://www.kildaredoc.ie/medical-certificate.md): Request a sick, unfit for travel, fit to travel or return-to-work medical certificate from Irish-registered GPs at Kildare Clinic. From €30, issued within 5 hours.
 - [Contact](https://www.kildaredoc.ie/contact.md): Contact Kildare Clinic on Claregate Street, Kildare, R51 P635. Call 085 867 8192, email or WhatsApp the practice. Find contact details, opening hours and a location map.
 - [Cookies](https://www.kildaredoc.ie/cookies.md): Learn about Kildare Clinic’s cookie choices, optional Google Analytics and Maps, browser storage and how to change or withdraw your choice.

@@ -32,7 +32,9 @@ export default function Seo({ path = "/" }) {
       <meta property="og:description" content={description} />
       <meta property="og:url" content={url} />
       <meta property="og:image" content={DEFAULT_IMAGE} />
-      <meta property="og:type" content="website" />
+      <meta property="og:type" content={page.article ? "article" : "website"} />
+      {page.article && <meta property="article:published_time" content={page.article.datePublished} />}
+      {page.article && <meta property="article:modified_time" content={page.lastModified} />}
       <meta property="og:site_name" content={SITE_NAME} />
       <meta property="og:locale" content="en_IE" />
 
