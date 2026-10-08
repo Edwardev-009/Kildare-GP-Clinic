@@ -6,6 +6,9 @@ import WhatsAppFab from "./components/WhatsAppFab.jsx";
 import Home from "./pages/Home.jsx";
 import About from "./pages/About.jsx";
 import Blog from "./pages/Blog.jsx";
+import Physiotherapy from "./pages/Physiotherapy.jsx";
+import PhysioArticle from "./pages/PhysioArticle.jsx";
+import { physioPath, physioArticle } from "./data/physio.js";
 import Contact from "./pages/Contact.jsx";
 import MedicalCertificate from "./pages/MedicalCertificate.jsx";
 import CookiePolicy from "./pages/CookiePolicy.jsx";
@@ -44,6 +47,8 @@ export default function App() {
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/blog" element={<Blog />} />
+          <Route path={physioPath} element={<Physiotherapy />} />
+          <Route path={physioArticle.path} element={<PhysioArticle />} />
           <Route path="/medical-certificate" element={<MedicalCertificate />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/cookies" element={<CookiePolicy />} />

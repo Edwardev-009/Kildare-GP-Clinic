@@ -7,6 +7,7 @@ import "./Header.css";
 const links = [
   { to: "/", label: "Home" },
   { to: "/about", label: "About" },
+  { to: "/physiotherapy", label: "Physio" },
   { to: "/blog", label: "Blog" },
   { to: "/medical-certificate", label: "Medical Certificate" },
   { to: "/contact", label: "Contact" },

@@ -20,7 +20,8 @@ npm run preview   # preview the production build
 src/
   components/   Header, Footer, PageHeader, GallerySlider, TestimonialSlider,
                 ContactForm, Faq, Seo, WhatsAppFab (floating button)
-  pages/        Home, About, Blog, Contact
+  pages/        Home, About, Blog, Physiotherapy, PhysioArticle, Contact,
+                MedicalCertificate, CookiePolicy
   data/content.js   All clinic details in one place — edit here first
   assets/       Clinic photos, incl. hero-img.webp used in the hero + gallery
 public/
@@ -30,7 +31,7 @@ public/
   llms.txt, llms-full.txt  AI discovery index and combined clinic summaries
   index.md, about.md, contact.md, blog.md  Concise public page summaries
 scripts/
-  build.mjs       Builds and prerenders all four pages; refreshes discovery files
+  build.mjs       Builds and prerenders every SEO route; refreshes discovery files
   check-seo.mjs   Checks the generated HTML, schema, links, hours and assets
   check-http.mjs  Checks actual HTTP responses from a local or deployed site
 ```
@@ -52,14 +53,16 @@ so it reads at full size instead of being squeezed into a half-width column.
 - The confirmed public origin is `https://www.kildaredoc.ie`, derived from
   `clinic.website` in `src/data/content.js`. Metadata and route inventory live
   in `src/data/seo.js`.
-- `npm run build` generates complete static HTML for `/`, `/about`, `/blog`
-  and `/contact`. Every page contains readable content, one title, description,
+- `npm run build` generates complete static HTML for every route in `pages`
+  in `src/data/seo.js`, including `/physiotherapy` and the nested physio guide.
+  Every page contains readable content, one title, description,
   canonical URL, Open Graph tags and Twitter Card tags before JavaScript runs.
   React hydrates that HTML to keep navigation, FAQs and sliders interactive.
 - JSON-LD connects the `MedicalClinic`, `WebSite` and current page, with
   breadcrumbs on inner pages and a `FAQPage` on the homepage. Services, contact
   details and hours come from the same data as the visible pages. No invented
-  ratings, prices, clinician credentials or full-article schema are included.
+  ratings or clinician credentials are included. The complete physio guide
+  receives `BlogPosting` markup; preview cards do not. Physio fees are not listed.
 - Confirmed hours: Monday–Tuesday and Friday–Saturday, 10 AM–2 PM;
   Thursday, 4 PM–8 PM; Wednesday and Sunday OFF. Edit `openingSchedule` to update the visible
   hours, FAQ, JSON-LD and Markdown summaries together, then rebuild.
@@ -122,8 +125,9 @@ loads and navigation in Analytics Realtime or DebugView.
   listed people, roles and clinical claims are accurate and approved.
 - **Testimonials** (`src/data/content.js` → `testimonials`): confirm their
   source, accuracy and permission to publish. They are not used for rating schema.
-- **Blog posts** are placeholder articles for layout purposes — the Blog page
-  currently only lists posts (no individual article routes yet).
+- **Blog posts**: the complete physio appointment guide has its own URL and
+  organization byline. Six existing preview cards remain previews. Do not add
+  clinician-review claims without an actual review.
 - **Contact form** submits client-side only right now (`ContactForm.jsx`) —
   wire the `handleSubmit` function to an email/CRM endpoint (e.g. Formspree,
   a serverless function, or your own API) before launch.
@@ -150,8 +154,11 @@ mobile layout and Core Web Vitals on the actual host.
 
 For greater search and AI visibility, verify the site in Google Search Console
 and Bing Webmaster Tools and submit the sitemap. Keep the clinic's Google
-Business Profile details consistent with the site. Replace preview-only blog
-cards with complete clinician-reviewed articles, author information, review
-dates and real article URLs before adding Article schema or sitemap entries.
+Business Profile details consistent with the site. Publish further complete
+clinician-reviewed articles with author information, review dates and real
+article URLs before adding their Article schema or sitemap entries.
 Monitor search impressions, relevant enquiries and AI referral traffic;
 file availability alone does not measure visibility or patient conversions.
+
+For the 9 October 2026 GP/physio implementation, live audit findings and priority
+hosting/search-account actions, see [the SEO action plan](docs/SEO_ACTION_PLAN.md).

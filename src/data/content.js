@@ -90,7 +90,12 @@ export const services = [
     text: "Ongoing monitoring and support for diabetes, blood pressure, asthma and other long-term conditions, with regular reviews to keep your health on track.",
     icon: "ClipboardCheck",
   },
-  
+  {
+    title: "Physiotherapy",
+    text: "Physiotherapy with Muqadas at our Claregate Street clinic. Contact reception to discuss your needs and arrange an appointment during clinic hours.",
+    icon: "Activity",
+    path: "/physiotherapy",
+  },
 ];
 
 export const process = [
@@ -163,6 +168,14 @@ export const faqs = [
     question: "Where is Kildare Clinic located?",
     answer:
       "The clinic is on Claregate Street, Kildare, R51 P635 — look for the black and gold signage.",
+  },
+  {
+    question: "Can I see a GP in Kildare without being registered at the clinic?",
+    answer: "You can visit our walk-in GP practice during opening hours and register at the front desk. Call ahead to check waiting times and what to bring for your first visit.",
+  },
+  {
+    question: "Does Kildare Clinic offer physiotherapy?",
+    answer: "Yes. Our team includes Muqadas, our physiotherapist. Physiotherapy uses the same clinic opening hours; call or WhatsApp to confirm an appointment before travelling.",
   },
   {
     question: "Can I book a travel vaccination or flu jab?",

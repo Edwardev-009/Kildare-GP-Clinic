@@ -61,7 +61,7 @@
 .site-nav ul {
   display: flex;
   align-items: center;
-  gap: 34px;
+  gap: 12px;
 }
 
 .site-nav a {
@@ -81,7 +81,7 @@
 .site-nav {
   display: flex;
   align-items: center;
-  gap: 40px;
+  gap: 20px;
 }
 
 .site-nav__phone {
@@ -151,7 +151,7 @@
   display: none;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 1140px) {
   .menu-toggle {
     display: block;
   }

@@ -28,6 +28,9 @@
   max-width: 44ch;
 }
 
+.hero__lede a { text-decoration: underline; text-underline-offset: 4px; }
+.service-card__link { display: inline-flex; align-items: center; gap: 8px; margin-top: 20px; font-weight: 600; text-decoration: underline; text-underline-offset: 4px; }
+
 .hero__actions {
   display: flex;
   flex-wrap: wrap;
@@ -319,6 +322,8 @@
   grid-template-columns: 0.9fr 1.1fr;
   gap: 64px;
 }
+
+.contact-section__grid > * { min-width: 0; }
 
 .contact-section__head {
   margin-bottom: 0;
