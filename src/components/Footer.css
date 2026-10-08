@@ -112,6 +112,10 @@
   color: rgba(255, 255, 255, 0.5);
 }
 
+.site-footer__cookies { display: flex; flex-wrap: wrap; gap: 16px; align-items: center; }
+.site-footer__cookies a, .site-footer__cookies button { color: rgba(255, 255, 255, 0.8); text-decoration: underline; text-underline-offset: 3px; font: inherit; }
+.site-footer__cookies button { background: transparent; border: 0; padding: 0; }
+
 @media (max-width: 900px) {
   .site-footer__grid {
     grid-template-columns: 1fr 1fr;

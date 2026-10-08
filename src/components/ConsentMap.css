@@ -1,0 +1,19 @@
+.consent-map {
+  min-height: 280px;
+  height: 100%;
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  text-align: center;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--paper-dim);
+  color: var(--ink);
+}
+.consent-map h3 { font-size: 1.2rem; }
+.consent-map p { max-width: 520px; font-size: 0.9rem; }
+.consent-map__actions { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 16px; margin-top: 4px; }
+.consent-map__actions a { font-size: 0.9rem; text-decoration: underline; text-underline-offset: 3px; }

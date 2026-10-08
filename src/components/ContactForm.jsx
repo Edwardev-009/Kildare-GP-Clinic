@@ -1,5 +1,4 @@
 import { useState } from "react";
-import emailjs from "@emailjs/browser";
 import { Send, CheckCircle2, Loader2 } from "lucide-react";
 import {
   CERTIFICATE_REASON,
@@ -63,6 +62,8 @@ export default function ContactForm({
 
     setStatus("sending");
     try {
+      // Keep cookie controls usable when storage is blocked; EmailJS reads storage on import.
+      const { default: emailjs } = await import("@emailjs/browser");
       await emailjs.send(
         EMAILJS_SERVICE_ID,
         EMAILJS_TEMPLATE_ID,
