@@ -8,6 +8,8 @@ import {
   MapPin,
   ShieldCheck,
   Clock3,
+  Sunrise,
+  Sunset,
   ArrowRight,
   Phone,
 } from "lucide-react";
@@ -23,7 +25,8 @@ import galleryReception from "../assets/gallery-reception.webp";
 import galleryWaiting from "../assets/gallery-waiting-area.webp";
 import {
   clinic,
-  hoursSummary,
+  hoursMorning,
+  hoursEvening,
   whatsappLink,
   services,
   process,
@@ -70,7 +73,7 @@ export default function Home() {
             </span>
             
             <h1>
-              Walk-in GP care on Claregate Street, whenever you need it.
+              Walk-in GP care on Claregate Street.
             </h1>
             {/* <p className="hero__lede">
               Kildare Clinic is a local GP practice offering walk-in
@@ -101,15 +104,38 @@ export default function Home() {
               <ArrowRight className="hero__call__arrow" size={18} />
             </a>
 
-            <div className="hero__meta">
-              <div>
-                <MapPin size={16} />
-                <span>{clinic.address}</span>
+            <div className="hero__hours" aria-label="Opening hours">
+              <div className="hero__hours__row hero__hours__row--head">
+                <span className="hero__hours__days">
+                  <Clock3 size={16} /> Days
+                </span>
+                <span>
+                  <Sunrise size={16} /> Morning
+                </span>
+                <span>
+                  <Sunset size={16} /> Evening
+                </span>
               </div>
-              <div>
-                <Clock3 size={16} />
-                <span>{hoursSummary}</span>
-              </div>
+              {hoursMorning.map((m, i) => {
+                const e = hoursEvening[i];
+                const closed = m.off && e.off;
+                return (
+                  <div
+                    className={`hero__hours__row${closed ? " is-off" : ""}`}
+                    key={m.day}
+                  >
+                    <span className="hero__hours__day">{m.day}</span>
+                    {closed ? (
+                      <span className="hero__hours__off">{m.time}</span>
+                    ) : (
+                      <>
+                        <span>{m.time}</span>
+                        <span>{e.time}</span>
+                      </>
+                    )}
+                  </div>
+                );
+              })}
             </div>
           </div>
 
