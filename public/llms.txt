@@ -4,17 +4,18 @@
 
 Official website: https://www.kildaredoc.ie/. Call 085 867 8192 or email info@kildaredoc.ie for clinic enquiries. Contact the clinic to confirm opening hours, waiting times and service availability before travelling.
 
-The resources below are concise Markdown summaries of the public website. No individual medical advice, prices, clinician qualifications or review ratings are asserted here.
+The resources below are concise Markdown summaries of the public website. No individual medical advice, clinician qualifications or review ratings are asserted here. Medical certificate prices are listed on the medical certificate page.
 
 ## Clinic information
 
 - [Home](https://www.kildaredoc.ie/index.md): Kildare Clinic is a walk-in GP practice on Claregate Street, Kildare. General practice, family healthcare, travel advice and chronic disease management. Contact the clinic to plan your visit.
 - [About](https://www.kildaredoc.ie/about.md): Learn about Kildare Clinic, a walk-in GP practice on Claregate Street, Kildare, and its approach to healthcare for the local community.
 - [Health Notes](https://www.kildaredoc.ie/blog.md): Browse health note previews from Kildare Clinic on seasonal health, travel health, family health and long-term conditions.
+- [Medical Certificate](https://www.kildaredoc.ie/medical-certificate.md): Request a sick, unfit for travel, fit to travel or return-to-work medical certificate from Irish-registered GPs at Kildare Clinic. From €30, issued within 5 hours.
 - [Contact](https://www.kildaredoc.ie/contact.md): Contact Kildare Clinic on Claregate Street, Kildare, R51 P635. Call 085 867 8192, email or WhatsApp the practice. Find contact details, opening hours and a location map.
 
 ## Optional
 
-- [Combined clinic information](https://www.kildaredoc.ie/llms-full.txt): All four Markdown summaries in a single file.
+- [Combined clinic information](https://www.kildaredoc.ie/llms-full.txt): All Markdown summaries in a single file.
 - [XML sitemap](https://www.kildaredoc.ie/sitemap.xml): Canonical public page URLs.
 - [Crawler access rules](https://www.kildaredoc.ie/robots.txt): Public crawler permissions.

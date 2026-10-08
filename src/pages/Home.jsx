@@ -66,7 +66,7 @@ export default function Home() {
         <div className="container hero__grid">
           <div className="hero__copy">
             <span className="badge">
-              <ShieldCheck size={15} /> Walk-ins welcome Monday–Thursday
+              <ShieldCheck size={15} /> Walk-ins welcome Monday–Saturday
             </span>
             
             <h1>

@@ -44,6 +44,37 @@
   margin-top: 4px;
 }
 
+.contact-form input[readonly] {
+  background: var(--paper-dim);
+  color: var(--navy-900);
+  font-weight: 600;
+  cursor: default;
+}
+
+.contact-form button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.contact-form__error {
+  color: #9b1c1c;
+  background: #fdecec;
+  border-radius: var(--radius-sm);
+  padding: 12px 14px;
+  font-size: 0.92rem;
+}
+
+.contact-form__spin {
+  animation: contact-form-spin 0.9s linear infinite;
+}
+
+@keyframes contact-form-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 .contact-form__success {
   display: flex;
   flex-direction: column;

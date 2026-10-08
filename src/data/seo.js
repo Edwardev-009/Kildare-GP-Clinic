@@ -1,4 +1,5 @@
 import { clinic, faqs, services, openingSchedule } from "./content.js";
+import { certificates, certificateFaqs, CERTIFICATE_TURNAROUND } from "./certificates.js";
 
 export const SITE_URL = `https://${clinic.website}`;
 export const ROBOTS = "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1";
@@ -24,6 +25,13 @@ export const pages = [
     title: "Health Notes & Blog",
     description: "Browse health note previews from Kildare Clinic on seasonal health, travel health, family health and long-term conditions.",
     type: "CollectionPage",
+  },
+  {
+    path: "/medical-certificate",
+    label: "Medical Certificate",
+    title: "Online Medical Certificate in Ireland",
+    description: "Request a sick, unfit for travel, fit to travel or return-to-work medical certificate from Irish-registered GPs at Kildare Clinic. From €30, issued within 5 hours.",
+    type: "WebPage",
   },
   {
     path: "/contact",
@@ -107,7 +115,39 @@ export function structuredData(page) {
         { "@type": "ListItem", position: 2, name: page.label, item: url },
       ],
     });
-  } else {
+  }
+  if (page.path === "/medical-certificate") {
+    graph.push(
+      {
+        "@type": "OfferCatalog",
+        "@id": `${url}#certificates`,
+        name: "Medical certificates",
+        isPartOf: { "@id": pageId },
+        itemListElement: certificates.map((cert) => ({
+          "@type": "Offer",
+          price: String(cert.price),
+          priceCurrency: "EUR",
+          description: `${cert.summary} Issued ${CERTIFICATE_TURNAROUND.toLowerCase()}.`,
+          itemOffered: {
+            "@type": "Service",
+            name: cert.title,
+            provider: { "@id": clinicId },
+          },
+        })),
+      },
+      {
+        "@type": "FAQPage",
+        "@id": `${url}#faq`,
+        isPartOf: { "@id": pageId },
+        mainEntity: certificateFaqs.map((faq) => ({
+          "@type": "Question",
+          name: faq.question,
+          acceptedAnswer: { "@type": "Answer", text: faq.answer },
+        })),
+      },
+    );
+  }
+  if (page.path === "/") {
     graph.push({
       "@type": "FAQPage",
       "@id": `${SITE_URL}/#faq`,

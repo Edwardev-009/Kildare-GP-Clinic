@@ -17,7 +17,7 @@ export default function Footer() {
             </span>
           </div>
           <p>
-            A walk-in GP practice on Claregate Street, Kildare — general practice,
+            A walk-in GP practice on Claregate Street, Kildare - general practice,
             family healthcare and chronic condition management for the local community.
           </p>
         </div>
@@ -28,6 +28,7 @@ export default function Footer() {
             <li><NavLink to="/">Home</NavLink></li>
             <li><NavLink to="/about">About</NavLink></li>
             <li><NavLink to="/blog">Blog</NavLink></li>
+            <li><NavLink to="/medical-certificate">Medical Certificate</NavLink></li>
             <li><NavLink to="/contact">Contact</NavLink></li>
           </ul>
         </div>

@@ -1,0 +1,311 @@
+/* ---------- Trust strip ---------- */
+.cert-trust {
+  background: var(--navy-800);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.cert-trust__list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  padding-top: 18px !important;
+  padding-bottom: 18px !important;
+}
+
+.cert-trust__list li {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  color: var(--navy-100);
+  font-size: 0.92rem;
+  font-weight: 600;
+}
+
+.cert-trust__list svg {
+  color: var(--brass-300);
+  flex-shrink: 0;
+}
+
+/* ---------- Cards ---------- */
+.cert-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+
+.cert-card {
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-top: 3px solid var(--brass-500);
+  border-radius: var(--radius-md);
+  padding: 30px;
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.cert-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 18px 40px rgba(10, 10, 11, 0.1);
+}
+
+.cert-card__top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 18px;
+}
+
+.cert-card__icon {
+  display: grid;
+  place-items: center;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: var(--navy-900);
+  color: var(--brass-300);
+}
+
+.cert-card__price {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 4px;
+}
+
+.cert-card__price strong {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  line-height: 1;
+  color: var(--navy-900);
+}
+
+.cert-card__price span {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--brass-600);
+}
+
+.cert-card h3 {
+  font-size: 1.3rem;
+  margin-bottom: 10px;
+}
+
+.cert-card__summary {
+  color: var(--ink-soft);
+  font-size: 0.97rem;
+  line-height: 1.65;
+}
+
+.cert-card__time {
+  margin-top: 12px;
+  font-weight: 600;
+  font-size: 0.92rem;
+  color: var(--navy-900);
+}
+
+.cert-card__points {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 18px 0 26px;
+  padding-top: 18px;
+  border-top: 1px dashed var(--line-strong);
+}
+
+.cert-card__points li {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  font-size: 0.92rem;
+  color: var(--ink-soft);
+}
+
+.cert-card__points svg {
+  color: var(--brass-600);
+  flex-shrink: 0;
+  margin-top: 3px;
+}
+
+.cert-card__btn {
+  margin-top: auto;
+  justify-content: center;
+  text-align: center;
+  width: 100%;
+}
+
+/* ---------- How it works ---------- */
+.cert-how {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: center;
+}
+
+.cert-how__image img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: var(--radius-md);
+  box-shadow: 0 24px 50px rgba(10, 10, 11, 0.16);
+}
+
+.cert-how h2 {
+  font-size: clamp(1.7rem, 2.6vw, 2.2rem);
+  margin: 12px 0 14px;
+}
+
+.cert-how__lede {
+  color: var(--ink-soft);
+  line-height: 1.7;
+  margin-bottom: 28px;
+}
+
+.cert-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  list-style: none;
+  margin: 0 0 4px;
+  padding: 0;
+}
+
+.cert-steps li {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+.cert-steps__num {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--navy-900);
+  color: var(--brass-300);
+  font-weight: 700;
+}
+
+.cert-steps h3 {
+  font-size: 1.1rem;
+  margin-bottom: 4px;
+}
+
+.cert-steps p {
+  color: var(--ink-soft);
+  font-size: 0.96rem;
+  line-height: 1.6;
+}
+
+/* ---------- Info cards ---------- */
+.cert-info {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.cert-info__card {
+  background: var(--paper-dim);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  padding: 32px;
+}
+
+.cert-info__card > svg {
+  color: var(--brass-600);
+}
+
+.cert-info__card h3 {
+  font-size: 1.2rem;
+  margin: 14px 0 16px;
+}
+
+.cert-info__card ul {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.cert-info__card li {
+  position: relative;
+  padding-left: 18px;
+  color: var(--ink-soft);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.cert-info__card li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.62em;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--brass-500);
+}
+
+/* ---------- Help band ---------- */
+.cert-help {
+  padding: 64px 0;
+}
+
+.cert-help__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+  flex-wrap: wrap;
+}
+
+.cert-help h2 {
+  font-size: clamp(1.5rem, 2.4vw, 2rem);
+}
+
+.cert-help p {
+  margin-top: 10px;
+  color: var(--navy-100);
+  opacity: 0.85;
+}
+
+.cert-help__actions {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 900px) {
+  .cert-grid,
+  .cert-info,
+  .cert-how {
+    grid-template-columns: 1fr;
+  }
+  .cert-how {
+    gap: 36px;
+  }
+  .cert-trust__list {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+  .cert-trust__list li {
+    justify-content: flex-start;
+  }
+}
+
+@media (max-width: 520px) {
+  .cert-card {
+    padding: 24px 20px;
+  }
+}
+
+/* ---------- FAQ ---------- */
+.cert-faq {
+  max-width: 820px;
+}

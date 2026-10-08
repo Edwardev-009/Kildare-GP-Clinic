@@ -7,6 +7,7 @@ import Home from "./pages/Home.jsx";
 import About from "./pages/About.jsx";
 import Blog from "./pages/Blog.jsx";
 import Contact from "./pages/Contact.jsx";
+import MedicalCertificate from "./pages/MedicalCertificate.jsx";
 import Seo from "./components/Seo.jsx";
 import PageHeader from "./components/PageHeader.jsx";
 
@@ -41,6 +42,7 @@ export default function App() {
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/blog" element={<Blog />} />
+          <Route path="/medical-certificate" element={<MedicalCertificate />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="*" element={<NotFound />} />
         </Routes>

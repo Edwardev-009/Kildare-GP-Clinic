@@ -48,7 +48,7 @@ const shiftHours = (index) => openingSchedule.map(({ day, sessions }) => ({
 
 export const hoursMorning = shiftHours(0);
 export const hoursEvening = shiftHours(1);
-export const hoursSummary = `Monday–Thursday: ${hours[0].time}. Friday–Sunday: closed for now.`;
+export const hoursSummary = `Monday–Saturday: ${hours[0].time}. Sunday: closed for now.`;
 
 export const services = [
   {
@@ -100,7 +100,7 @@ export const process = [
 export const team = [
   { name: "Dr. S.Rasool", role: "Lead General Practitioner" },
   { name: "Dr. Sania Batool", role: "General Practitioner" },
-  { name: "Dr. Muqadas", role: "Physiotherapist" },
+  { name: "Muqadas", role: "Physiotherapist" },
   // { name: "Sarah O'Connor", role: "Clinic Manager" },
   // { name: "David Murphy", role: "Patient Coordinator" },
   // { name: "Emma Walsh", role: "Receptionist" },
