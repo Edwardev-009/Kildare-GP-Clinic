@@ -23,6 +23,22 @@ export default function Footer() {
             A walk-in GP practice on Claregate Street, Kildare - general practice,
             family healthcare and chronic condition management for the local community.
           </p>
+          <nav className="site-footer__social" aria-label="Social media">
+            <a href="https://www.instagram.com/kildaregp/" target="_blank" rel="noopener noreferrer">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true" focusable="false">
+                <rect x="3" y="3" width="18" height="18" rx="5" />
+                <circle cx="12" cy="12" r="4" />
+                <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none" />
+              </svg>
+              <span>Instagram</span>
+            </a>
+            <a href="https://www.facebook.com/profile.php?id=61594213060923" target="_blank" rel="noopener noreferrer">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false">
+                <path d="M14 22v-9h3l.5-4H14V6.5c0-1.1.3-1.5 1.5-1.5H18V1h-3c-3.2 0-5 1.8-5 5v3H7v4h3v9z" />
+              </svg>
+              <span>Facebook</span>
+            </a>
+          </nav>
         </div>
 
         <div className="site-footer__col">
