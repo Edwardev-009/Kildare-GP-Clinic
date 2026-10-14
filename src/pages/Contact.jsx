@@ -1,12 +1,14 @@
-import { MapPin, Phone, Mail, MessageCircle, Clock3, Sunrise, Sunset } from "lucide-react";
+import { MapPin, Phone, Mail, MessageCircle, Clock3, Sunrise, Sunset, CalendarCheck } from "lucide-react";
 import PageHeader from "../components/PageHeader.jsx";
 import Seo from "../components/Seo.jsx";
 import ContactForm from "../components/ContactForm.jsx";
 import ConsentMap from "../components/ConsentMap.jsx";
 import { clinic, hoursMorning, hoursEvening, whatsappLink } from "../data/content.js";
+import { useAppointment } from "../lib/appointment-context.js";
 import "./Contact.css";
 
 export default function Contact() {
+  const { openAppointment } = useAppointment();
   const mapSrc = `https://maps.google.com/maps?q=${encodeURIComponent(
     clinic.address
   )}&output=embed`;
@@ -56,6 +58,12 @@ export default function Contact() {
                 <p>{clinic.address}</p>
               </div>
             </div>
+          </div>
+
+          <div className="book-cta">
+            <button type="button" className="btn btn-gold" onClick={openAppointment}>
+              <CalendarCheck size={18} /> Book an Appointment
+            </button>
           </div>
 
           <div className="contact-hours">

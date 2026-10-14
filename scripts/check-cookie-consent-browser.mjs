@@ -364,13 +364,15 @@ try {
       { day: "Monday", sessions: [{ opens: "10:00", closes: "14:00" }] },
       { day: "Tuesday", sessions: [{ opens: "10:00", closes: "14:00" }] },
       { day: "Wednesday", sessions: [] },
-      { day: "Thursday", sessions: [{ opens: "16:00", closes: "20:00" }] },
+      { day: "Thursday", sessions: [{ opens: "10:00", closes: "14:00" }] },
       { day: "Friday", sessions: [{ opens: "10:00", closes: "14:00" }] },
-      { day: "Saturday", sessions: [{ opens: "10:00", closes: "14:00" }] },
+      { day: "Saturday", sessions: [{ opens: "10:00", closes: "14:00" }, { opens: "17:00", closes: "20:00" }] },
       { day: "Sunday", sessions: [] },
     ]);
-    assert.equal(hoursMorning.find(({ day }) => day === "Thursday").off, true);
-    assert.equal(hoursEvening.find(({ day }) => day === "Thursday").time, "4:00 PM – 8:00 PM");
+    assert.equal(hoursMorning.find(({ day }) => day === "Saturday").time, "10:00 AM – 2:00 PM");
+    assert.equal(hoursMorning.find(({ day }) => day === "Wednesday").off, true);
+    assert.equal(hoursEvening.find(({ day }) => day === "Saturday").time, "5:00 PM – 8:00 PM");
+    assert.equal(hoursEvening.find(({ day }) => day === "Thursday").off, true);
   });
   assert.deepEqual(allErrors, [], "No page errors or hydration failures");
   assert.deepEqual(emailJsChunks, [], "EmailJS remains lazy-loaded until form submission; tests never submit forms");

@@ -1,5 +1,5 @@
 import { clinic, faqs, services, openingSchedule } from "./content.js";
-import { certificates, certificateFaqs, CERTIFICATE_TURNAROUND } from "./certificates.js";
+import { certificates, certificateFaqs } from "./certificates.js";
 import { physioPath, physioDescription, physioFaqs, physioArticle } from "./physio.js";
 
 export const SITE_URL = `https://${clinic.website}`;
@@ -46,8 +46,8 @@ export const pages = [
   {
     path: "/medical-certificate",
     label: "Medical Certificate",
-    title: "Online Medical Certificate in Ireland",
-    description: "Request a sick, unfit for travel, fit to travel or return-to-work medical certificate from Irish-registered GPs at Kildare Clinic. From €30, issued within 5 hours.",
+    title: "Medical Certificate in Kildare",
+    description: "Sick, travel and return-to-work medical certificates from Irish-registered GPs at Kildare Clinic. €50 per certificate; visit the clinic to be examined by a doctor.",
     type: "WebPage",
   },
   {
@@ -194,7 +194,7 @@ export function structuredData(page) {
           "@type": "Offer",
           price: String(cert.price),
           priceCurrency: "EUR",
-          description: `${cert.summary} Issued ${CERTIFICATE_TURNAROUND.toLowerCase()}.`,
+          description: `${cert.summary} Issued by the doctor after an in-person examination, where applicable.`,
           itemOffered: {
             "@type": "Service",
             name: cert.title,

@@ -1,0 +1,406 @@
+/* Appointment request modal + booking calendar */
+
+.appt-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 300;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 40px 16px;
+  background: rgba(10, 10, 11, 0.72);
+  overflow-y: auto;
+}
+
+.appt-modal__panel {
+  position: relative;
+  width: 100%;
+  max-width: 600px;
+  margin: auto;
+  background: var(--paper);
+  border-top: 4px solid var(--brass-500);
+  border-radius: var(--radius-md);
+  padding: 36px 32px 32px;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.4);
+}
+
+.appt-modal__panel h2 {
+  font-size: 1.5rem;
+  margin: 8px 0 6px;
+  padding-right: 36px;
+}
+
+.appt-modal__lede {
+  color: var(--ink-soft);
+  font-size: 0.95rem;
+  margin: 0 0 22px;
+}
+
+.appt-modal__close {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid var(--line-strong);
+  background: #fff;
+  color: var(--navy-900);
+}
+
+.appt-modal__close:hover {
+  border-color: var(--navy-900);
+}
+
+/* ---- form ---- */
+
+.appt-form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.appt-form__row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+}
+
+.appt-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--navy-900);
+}
+
+.appt-form input[type="text"],
+.appt-form input[type="tel"],
+.appt-form input[type="email"],
+.appt-form select,
+.appt-form textarea {
+  min-width: 0;
+  width: 100%;
+  font-family: var(--font-body);
+  font-size: 0.98rem;
+  padding: 13px 14px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--line-strong);
+  background: #fff;
+  color: var(--ink);
+  font-weight: 400;
+}
+
+.appt-form textarea {
+  resize: vertical;
+}
+
+.appt-form input:focus,
+.appt-form select:focus,
+.appt-form textarea:focus {
+  border-color: var(--navy-700);
+}
+
+.appt-form__group {
+  border: none;
+  margin: 0;
+  padding: 0;
+  min-width: 0;
+}
+
+.appt-form__group legend {
+  padding: 0;
+  margin-bottom: 10px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--navy-900);
+}
+
+.appt-form__submit {
+  align-self: flex-start;
+}
+
+.appt-form__submit:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.appt-form__error {
+  margin: 0;
+  color: #9b1c1c;
+  background: #fdecec;
+  border-radius: var(--radius-sm);
+  padding: 12px 14px;
+  font-size: 0.92rem;
+}
+
+.appt-form__spin {
+  animation: appt-spin 0.9s linear infinite;
+}
+
+@keyframes appt-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ---- Morning / Evening radios ---- */
+
+.appt-shifts {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.appt-form label.appt-shift {
+  position: relative;
+  flex-direction: row;
+  gap: 0;
+  cursor: pointer;
+}
+
+.appt-shift input {
+  position: absolute;
+  opacity: 0;
+  inset: 0;
+  margin: 0;
+  cursor: pointer;
+}
+
+.appt-shift__body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  padding: 14px;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius-sm);
+  background: #fff;
+  font-size: 1rem;
+  color: var(--navy-900);
+  transition: border-color 0.15s ease, background 0.15s ease;
+}
+
+.appt-shift:hover .appt-shift__body {
+  border-color: var(--navy-900);
+}
+
+.appt-shift.is-active .appt-shift__body {
+  background: var(--navy-900);
+  border-color: var(--navy-900);
+  color: var(--brass-300);
+}
+
+.appt-shift input:focus-visible + .appt-shift__body {
+  outline: 2px solid var(--brass-500);
+  outline-offset: 2px;
+}
+
+/* ---- calendar ---- */
+
+.booking-cal {
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius-md);
+  background: #fff;
+  padding: 14px;
+}
+
+.booking-cal__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  color: var(--navy-900);
+}
+
+.booking-cal__nav {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: 1px solid var(--line-strong);
+  background: #fff;
+  color: var(--navy-900);
+}
+
+.booking-cal__nav:hover:not(:disabled) {
+  border-color: var(--navy-900);
+}
+
+.booking-cal__nav:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.booking-cal__grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 4px;
+}
+
+.booking-cal__weekday {
+  text-align: center;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  padding: 4px 0;
+}
+
+.booking-cal__day {
+  height: 40px;
+  border-radius: var(--radius-sm);
+  border: 1px solid transparent;
+  background: transparent;
+  color: var(--ink-soft);
+  font-family: var(--font-body);
+  font-size: 0.92rem;
+}
+
+.booking-cal__day:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.booking-cal__day.is-available {
+  background: var(--brass-100);
+  border-color: var(--brass-300);
+  color: var(--navy-900);
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.booking-cal__day.is-available:hover {
+  border-color: var(--brass-600);
+}
+
+.booking-cal__day.is-today:not(.is-selected) {
+  box-shadow: inset 0 0 0 1px var(--navy-700);
+}
+
+.booking-cal__day.is-selected {
+  background: var(--navy-900);
+  border-color: var(--navy-900);
+  color: var(--brass-300);
+  opacity: 1;
+}
+
+.booking-cal__day:focus-visible,
+.appt-slot:focus-visible {
+  outline: 2px solid var(--brass-500);
+  outline-offset: 2px;
+}
+
+.booking-cal__hint {
+  margin: 10px 0 0;
+  font-size: 0.82rem;
+  color: var(--ink-soft);
+}
+
+/* ---- time slots ---- */
+
+.appt-slots {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(104px, 1fr));
+  gap: 10px;
+}
+
+.appt-slot {
+  padding: 11px 8px;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius-sm);
+  background: #fff;
+  color: var(--navy-900);
+  font-family: var(--font-body);
+  font-size: 0.94rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.appt-slot:hover {
+  border-color: var(--navy-900);
+}
+
+.appt-slot.is-selected {
+  background: var(--navy-900);
+  border-color: var(--navy-900);
+  color: var(--brass-300);
+}
+
+/* ---- success ---- */
+
+.appt-success {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  color: var(--brass-600);
+}
+
+.appt-success h2 {
+  margin: 4px 0 0;
+  color: var(--navy-900);
+}
+
+.appt-success p {
+  margin: 0;
+  color: var(--ink-soft);
+}
+
+.appt-success__summary {
+  width: 100%;
+  margin: 8px 0;
+  padding: 14px 16px;
+  background: var(--brass-100);
+  border-radius: var(--radius-md);
+  display: grid;
+  gap: 8px;
+}
+
+.appt-success__summary div {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.appt-success__summary dt {
+  font-weight: 600;
+  color: var(--navy-900);
+}
+
+.appt-success__summary dd {
+  margin: 0;
+  text-align: right;
+  color: var(--ink);
+}
+
+.appt-success__note {
+  font-size: 0.9rem;
+}
+
+/* ---- "Book an Appointment" buttons outside the modal ---- */
+
+.book-cta {
+  display: flex;
+  justify-content: center;
+  margin: 0 0 32px;
+}
+
+@media (max-width: 640px) {
+  .appt-modal {
+    padding: 16px 10px;
+  }
+  .appt-modal__panel {
+    padding: 28px 20px 24px;
+  }
+  .appt-form__row {
+    grid-template-columns: 1fr;
+  }
+}

@@ -4,7 +4,6 @@ import {
   PlaneTakeoff,
   PlaneLanding,
   BriefcaseMedical,
-  Clock3,
   ShieldCheck,
   FileCheck2,
   Check,
@@ -26,16 +25,17 @@ import {
   certificateNotIncluded,
   certificateWhen,
   certificateFaqs,
-  CERTIFICATE_TURNAROUND,
+  CERTIFICATE_PRICE,
+  CERTIFICATE_VISIT_NOTE,
 } from "../data/certificates.js";
 import "./MedicalCertificate.css";
 
 const icons = { Thermometer, PlaneTakeoff, PlaneLanding, BriefcaseMedical };
 
 const trust = [
-  { icon: ShieldCheck, text: "Reviewed by Irish-registered GPs" },
-  { icon: Clock3, text: `${CERTIFICATE_TURNAROUND} turnaround` },
-  { icon: FileCheck2, text: "Simple online request" },
+  { icon: ShieldCheck, text: "Seen by Irish-registered GPs" },
+  { icon: Stethoscope, text: "Examined in person at the clinic" },
+  { icon: FileCheck2, text: `€${CERTIFICATE_PRICE} for every certificate` },
 ];
 
 export default function MedicalCertificate() {
@@ -47,8 +47,8 @@ export default function MedicalCertificate() {
       <Seo path="/medical-certificate" />
       <PageHeader
         eyebrow="Medical Certificates"
-        title="Get your medical certificate online"
-        lede="Sick, travel and return-to-work certificates from Irish-registered GPs at Kildare Clinic. Send a short request and we'll take care of the rest."
+        title="Medical certificates at Kildare Clinic"
+        lede="Sick, travel and return-to-work certificates from Irish-registered GPs at Kildare Clinic. Visit the clinic, see the doctor and, if a certificate is applicable, it will be issued."
       />
 
       {/* ---------- Trust strip ---------- */}
@@ -69,7 +69,7 @@ export default function MedicalCertificate() {
           <div className="section-head">
             <span className="eyebrow">Choose a certificate</span>
             <h2>Which medical certificate do you need?</h2>
-            <p>Pick the certificate that matches your situation and send your request in a minute.</p>
+            <p>Pick the certificate that matches your situation. You'll need to visit the clinic so a doctor can examine you.</p>
           </div>
 
           <div className="cert-grid">
@@ -84,13 +84,13 @@ export default function MedicalCertificate() {
                     <div className="cert-card__price">
                       <strong>€{cert.price}</strong>
                       <span>
-                        <Clock3 size={14} /> {CERTIFICATE_TURNAROUND}
+                        <Stethoscope size={14} /> {CERTIFICATE_VISIT_NOTE}
                       </span>
                     </div>
                   </div>
                   <h3>{cert.title}</h3>
                   <p className="cert-card__summary">{cert.summary}</p>
-                  <p className="cert-card__time">You get it {CERTIFICATE_TURNAROUND.toLowerCase()}.</p>
+                  <p className="cert-card__time">Issued by the doctor after an in-person examination, if applicable.</p>
                   <ul className="cert-card__points">
                     {cert.points.map((point) => (
                       <li key={point}>
@@ -99,7 +99,7 @@ export default function MedicalCertificate() {
                     ))}
                   </ul>
                   <button type="button" className="btn btn-primary cert-card__btn" onClick={() => setActive(cert)}>
-                    Get {cert.title.split(" / ")[0]} Now
+                    Request {cert.title.split(" / ")[0]}
                   </button>
                 </article>
               );
@@ -116,10 +116,10 @@ export default function MedicalCertificate() {
           </div>
           <div>
             <span className="eyebrow">How it works</span>
-            <h2>Online medical certificates made simple</h2>
+            <h2>How to get your medical certificate</h2>
             <p className="cert-how__lede">
-              Request a certificate from your phone or computer. A GP at Kildare Clinic reviews your
-              request and, where clinically appropriate, issues your certificate by email.
+              Visit Kildare Clinic and a GP will examine you. If a certificate is applicable in your
+              case, the doctor will issue it.
             </p>
             <ol className="cert-steps">
               {certificateSteps.map((step, i) => (

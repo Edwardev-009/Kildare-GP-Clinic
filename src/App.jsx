@@ -13,6 +13,7 @@ import Contact from "./pages/Contact.jsx";
 import MedicalCertificate from "./pages/MedicalCertificate.jsx";
 import CookiePolicy from "./pages/CookiePolicy.jsx";
 import { CookieConsentProvider } from "./components/CookieConsent.jsx";
+import AppointmentProvider from "./components/AppointmentProvider.jsx";
 import Seo from "./components/Seo.jsx";
 import PageHeader from "./components/PageHeader.jsx";
 
@@ -37,26 +38,28 @@ function ScrollToTop() {
 export default function App() {
   return (
     <CookieConsentProvider>
-      <a href="#main" className="skip-link">
-        Skip to main content
-      </a>
-      <ScrollToTop />
-      <Header />
-      <main id="main">
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/blog" element={<Blog />} />
-          <Route path={physioPath} element={<Physiotherapy />} />
-          <Route path={physioArticle.path} element={<PhysioArticle />} />
-          <Route path="/medical-certificate" element={<MedicalCertificate />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/cookies" element={<CookiePolicy />} />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </main>
-      <Footer />
-      <WhatsAppFab />
+      <AppointmentProvider>
+        <a href="#main" className="skip-link">
+          Skip to main content
+        </a>
+        <ScrollToTop />
+        <Header />
+        <main id="main">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/blog" element={<Blog />} />
+            <Route path={physioPath} element={<Physiotherapy />} />
+            <Route path={physioArticle.path} element={<PhysioArticle />} />
+            <Route path="/medical-certificate" element={<MedicalCertificate />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/cookies" element={<CookiePolicy />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </main>
+        <Footer />
+        <WhatsAppFab />
+      </AppointmentProvider>
     </CookieConsentProvider>
   );
 }

@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
-import { Cross, Phone, Menu, X } from "lucide-react";
+import { Cross, Phone, Menu, X, CalendarCheck } from "lucide-react";
 import { clinic } from "../data/content.js";
+import { useAppointment } from "../lib/appointment-context.js";
 import "./Header.css";
 
 const links = [
@@ -14,6 +15,7 @@ const links = [
 ];
 
 export default function Header() {
+  const { openAppointment } = useAppointment();
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
@@ -65,6 +67,16 @@ export default function Header() {
               <span className="site-nav__phone__number">{clinic.phone}</span>
             </span>
           </a>
+          <button
+            type="button"
+            className="btn btn-gold site-nav__book"
+            onClick={() => {
+              setOpen(false);
+              openAppointment();
+            }}
+          >
+            <CalendarCheck size={16} strokeWidth={2.2} /> Book Appointment
+          </button>
         </nav>
 
         <button

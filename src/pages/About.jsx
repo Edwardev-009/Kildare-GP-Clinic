@@ -2,7 +2,7 @@ import { HeartHandshake, ShieldCheck, Users2, MessageCircle, MapPin, Clock3 } fr
 import PageHeader from "../components/PageHeader.jsx";
 import Seo from "../components/Seo.jsx";
 import { Link } from "react-router-dom";
-import reception from "../assets/reception.jpeg";
+import reception from "../assets/reception.webp";
 import doorOpen from "../assets/door-open.jpeg";
 import { clinic, hours, whatsappLink, team } from "../data/content.js";
 import "./About.css";

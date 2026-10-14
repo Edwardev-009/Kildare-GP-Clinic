@@ -2,7 +2,6 @@ import { useState } from "react";
 import { Send, CheckCircle2, Loader2 } from "lucide-react";
 import {
   CERTIFICATE_REASON,
-  CERTIFICATE_TURNAROUND,
   certificateOptions,
 } from "../data/certificates.js";
 import "./ContactForm.css";
@@ -75,7 +74,6 @@ export default function ContactForm({
           reason,
           certificate_type: needsCertificate ? selectedCertificate?.label || "" : NOT_APPLICABLE,
           pricing,
-          turnaround: needsCertificate ? CERTIFICATE_TURNAROUND : NOT_APPLICABLE,
           message,
         },
         { publicKey: EMAILJS_PUBLIC_KEY },
@@ -97,9 +95,10 @@ export default function ContactForm({
           <>
             <h3>Request received</h3>
             <p>
-              You'll receive a payment link via email shortly, and one of our
-              Doctors will call you for verification. For anything urgent,
-              please call or WhatsApp us directly.
+              Thanks, we've received your request. To get a certificate you'll
+              need to visit the clinic, where the doctor will examine you and,
+              if it's applicable, issue it. For anything urgent, please call or
+              WhatsApp us directly.
             </p>
           </>
         ) : (

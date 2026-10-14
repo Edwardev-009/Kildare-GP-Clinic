@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react";
 import { X } from "lucide-react";
 import ContactForm from "./ContactForm.jsx";
-import { CERTIFICATE_REASON, CERTIFICATE_TURNAROUND } from "../data/certificates.js";
+import { CERTIFICATE_REASON, CERTIFICATE_VISIT_NOTE } from "../data/certificates.js";
 import "./CertificateModal.css";
 
 export default function CertificateModal({ certificate, onClose }) {
@@ -36,7 +36,7 @@ export default function CertificateModal({ certificate, onClose }) {
         <span className="eyebrow">Medical certificate request</span>
         <h2 id="cert-modal-title">{certificate.title}</h2>
         <p className="cert-modal__meta">
-          €{certificate.price} · {CERTIFICATE_TURNAROUND}
+          €{certificate.price} · {CERTIFICATE_VISIT_NOTE}
         </p>
         <ContactForm compact initialReason={CERTIFICATE_REASON} initialCertificate={certificate.id} />
       </div>

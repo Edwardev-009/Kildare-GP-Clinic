@@ -28,9 +28,9 @@ export const openingSchedule = [
   { day: "Monday", sessions: [{ opens: "10:00", closes: "14:00" }] },
   { day: "Tuesday", sessions: [{ opens: "10:00", closes: "14:00" }] },
   { day: "Wednesday", sessions: [] },
-  { day: "Thursday", sessions: [{ opens: "16:00", closes: "20:00" }] },
+  { day: "Thursday", sessions: [{ opens: "10:00", closes: "14:00" }] },
   { day: "Friday", sessions: [{ opens: "10:00", closes: "14:00" }] },
-  { day: "Saturday", sessions: [{ opens: "10:00", closes: "14:00" }] },
+  { day: "Saturday", sessions: [{ opens: "10:00", closes: "14:00" }, { opens: "17:00", closes: "20:00" }] },
   { day: "Sunday", sessions: [] },
 ];
 
@@ -49,7 +49,7 @@ export const hours = openingSchedule.map(({ day, sessions }) => ({
   off: !sessions.length,
 }));
 
-// Classify by start time so Thursday's single afternoon session stays in Evening.
+// Classify by start time so an afternoon/evening session is always listed under Evening.
 const shiftHours = (morning) => openingSchedule.map(({ day, sessions }) => {
   const selected = sessions.filter(({ opens }) => (Number(opens.split(":")[0]) < 12) === morning);
   return { day, time: formatSessions(selected), off: !selected.length };
@@ -67,7 +67,14 @@ const groupedHours = hours.reduce((groups, row) => {
 const dayRange = (days) => days.length === 1 ? days[0] : `${days[0]}–${days.at(-1)}`;
 
 export const hoursSummary = groupedHours.map(({ days, time }) => `${dayRange(days)}: ${time}.`).join(" ");
-export const openingDaysLabel = groupedHours.filter(({ off }) => !off).map(({ days }) => dayRange(days)).join(", ");
+// Consecutive open days are joined into one range, whatever their hours (e.g. "Monday–Friday").
+const openRuns = [];
+hours.forEach(({ day, off }) => {
+  if (off) openRuns.push(null);
+  else if (openRuns.at(-1)) openRuns.at(-1).push(day);
+  else openRuns.push([day]);
+});
+export const openingDaysLabel = openRuns.filter(Boolean).map(dayRange).join(", ");
 
 export const services = [
   {

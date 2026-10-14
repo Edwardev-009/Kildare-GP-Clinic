@@ -3,6 +3,7 @@ import {
   Users,
   Plane,
   ClipboardCheck,
+  CalendarCheck,
   MessageCircle,
   Mail,
   MapPin,
@@ -20,6 +21,7 @@ import TestimonialSlider from "../components/TestimonialSlider.jsx";
 import ContactForm from "../components/ContactForm.jsx";
 import Faq from "../components/Faq.jsx";
 import Seo from "../components/Seo.jsx";
+import { useAppointment } from "../lib/appointment-context.js";
 import heroImg from "../assets/hero-clinic-signage.webp";
 import galleryStorefront from "../assets/gallery-storefront.webp";
 import galleryReception from "../assets/gallery-reception.webp";
@@ -29,7 +31,6 @@ import {
   hoursMorning,
   hoursEvening,
   openingDaysLabel,
-  whatsappLink,
   services,
   process,
   team,
@@ -63,6 +64,7 @@ const gallerySlides = [
 ];
 
 export default function Home() {
+  const { openAppointment } = useAppointment();
   return (
     <>
       <Seo path="/" />
@@ -84,14 +86,9 @@ export default function Home() {
               also available at the clinic.
             </p>
             <div className="hero__actions">
-              <a
-                className="btn btn-gold"
-                href={whatsappLink("Hi Kildare Clinic, I'd like to book an appointment.")}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <MessageCircle size={18} /> Book an Appointment
-              </a>
+              <button type="button" className="btn btn-gold" onClick={openAppointment}>
+                <CalendarCheck size={18} /> Book an Appointment
+              </button>
               <a className="btn btn-ghost" href={`mailto:${clinic.email}`}>
                 <Mail size={18} /> {clinic.email}
               </a>
