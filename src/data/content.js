@@ -30,7 +30,7 @@ export const openingSchedule = [
   { day: "Wednesday", sessions: [] },
   { day: "Thursday", sessions: [{ opens: "10:00", closes: "14:00" }] },
   { day: "Friday", sessions: [{ opens: "10:00", closes: "14:00" }] },
-  { day: "Saturday", sessions: [{ opens: "10:00", closes: "14:00" }, { opens: "17:00", closes: "20:00" }] },
+  { day: "Saturday", sessions: [{ opens: "10:00", closes: "14:00" }] },
   { day: "Sunday", sessions: [] },
 ];
 

@@ -28,7 +28,6 @@ export default function BookingCalendar({ shift, today, selected, onSelect }) {
     ...Array.from({ length: daysInMonth }, (_, i) => new Date(year, month, i + 1)),
   ];
 
-  const now = new Date();
   const monthLabel = view.toLocaleDateString("en-IE", { month: "long", year: "numeric" });
 
   return (
@@ -63,7 +62,7 @@ export default function BookingCalendar({ shift, today, selected, onSelect }) {
         ))}
         {cells.map((date, i) => {
           if (!date) return <span key={`blank-${i}`} />;
-          const available = isBookable(date, shift, today, now);
+          const available = isBookable(date, shift, today);
           const isSelected = selected && sameDay(date, selected);
           return (
             <button
@@ -81,7 +80,8 @@ export default function BookingCalendar({ shift, today, selected, onSelect }) {
         })}
       </div>
       <p className="booking-cal__hint">
-        Highlighted days are available. You can book up to {BOOKING_WINDOW_DAYS} days ahead.
+        Highlighted days are available. Bookings open from tomorrow (Irish time), up to {BOOKING_WINDOW_DAYS} days
+        ahead.
       </p>
     </div>
   );

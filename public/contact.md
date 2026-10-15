@@ -10,7 +10,7 @@ Source: https://www.kildaredoc.ie/contact
 
 ## Opening hours and availability
 
-Monday–Tuesday: 10:00 AM – 2:00 PM. Wednesday: OFF. Thursday–Friday: 10:00 AM – 2:00 PM. Saturday: 10:00 AM – 2:00 PM & 5:00 PM – 8:00 PM. Sunday: OFF. Contact the clinic to confirm current opening hours, waiting times and service availability before travelling.
+Monday–Tuesday: 10:00 AM – 2:00 PM. Wednesday: OFF. Thursday–Saturday: 10:00 AM – 2:00 PM. Sunday: OFF. Contact the clinic to confirm current opening hours, waiting times and service availability before travelling.
 
 ## Contact methods
 

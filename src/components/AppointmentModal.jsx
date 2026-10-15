@@ -2,11 +2,12 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { X, Send, CheckCircle2, Loader2, Sunrise, Sunset } from "lucide-react";
 import BookingCalendar from "./BookingCalendar.jsx";
 import {
+  ACTIVE_SHIFTS,
   APPOINTMENT_REASONS,
   SHIFTS,
+  clinicToday,
   formatDateLong,
   slotsFor,
-  startOfDay,
 } from "../data/appointments.js";
 import "./AppointmentModal.css";
 
@@ -19,7 +20,7 @@ const shiftIcons = { morning: Sunrise, evening: Sunset };
 
 export default function AppointmentModal({ onClose }) {
   const closeRef = useRef(null);
-  const [today] = useState(() => startOfDay(new Date()));
+  const [today] = useState(() => clinicToday());
 
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
@@ -194,7 +195,7 @@ export default function AppointmentModal({ onClose }) {
               <fieldset className="appt-form__group">
                 <legend>When would you like to come?</legend>
                 <div className="appt-shifts">
-                  {SHIFTS.map(({ id, label }) => {
+                  {ACTIVE_SHIFTS.map(({ id, label }) => {
                     const Icon = shiftIcons[id];
                     return (
                       <label key={id} className={`appt-shift${shift === id ? " is-active" : ""}`}>
