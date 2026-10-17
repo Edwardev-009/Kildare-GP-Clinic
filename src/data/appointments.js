@@ -6,7 +6,9 @@
 import { openingSchedule, formatTime } from "./content.js";
 
 export const BOOKING_WINDOW_DAYS = 30; // how far ahead a patient can book
-export const MIN_NOTICE_DAYS = 1; // no same-day bookings: earliest bookable day is tomorrow
+// Same-day booking is allowed: today's slots stay open until each slot's start time (Irish time).
+// Raise this to stop bookings some minutes before a slot starts (e.g. 30 = no booking in the last 30 min).
+export const SAME_DAY_BUFFER_MINUTES = 0;
 export const CLINIC_TIME_ZONE = "Europe/Dublin"; // "today" is always the date in Kildare, Ireland
 export const SLOT_MINUTES = 30; // length of one appointment slot
 
@@ -45,17 +47,24 @@ const toValue = (minutes) =>
 
 // ---- date helpers (all in the visitor's local time) ----
 
-// Today's calendar date in Ireland, whatever time zone the patient's device is in.
-// Returned as a date-only value (midnight) so it can be compared with calendar days.
-export function clinicToday(now = new Date()) {
+// The current date and time in Ireland, whatever time zone the patient's device is in.
+// `today` is a date-only value (midnight) so it can be compared with calendar days;
+// `minutes` is minutes since midnight (e.g. 11:15 -> 675).
+export function clinicClock(now = new Date()) {
   const parts = new Intl.DateTimeFormat("en-GB", {
     timeZone: CLINIC_TIME_ZONE,
     year: "numeric",
     month: "2-digit",
     day: "2-digit",
+    hour: "2-digit",
+    minute: "2-digit",
+    hourCycle: "h23",
   }).formatToParts(now);
   const get = (type) => Number(parts.find((part) => part.type === type).value);
-  return new Date(get("year"), get("month") - 1, get("day"));
+  return {
+    today: new Date(get("year"), get("month") - 1, get("day")),
+    minutes: get("hour") * 60 + get("minute"),
+  };
 }
 
 export const startOfDay = (date) => new Date(date.getFullYear(), date.getMonth(), date.getDate());
@@ -74,26 +83,28 @@ export function sessionsFor(date, shift) {
 }
 
 // Returns [{ value: "10:30", label: "10:30 AM" }, ...] in 30-minute steps.
-// Same-day booking is not allowed, so every slot of an open session is offered.
-export function slotsFor(date, shift) {
+// For today (Irish date), slots that have already started are left out.
+export function slotsFor(date, shift, clock) {
   const slots = [];
   for (const { opens, closes } of sessionsFor(date, shift)) {
     for (let t = toMinutes(opens); t + SLOT_MINUTES <= toMinutes(closes); t += SLOT_MINUTES) slots.push(t);
   }
-  return slots.map((t) => ({ value: toValue(t), label: formatTime(toValue(t)) }));
+  return slots
+    .filter((t) => !sameDay(date, clock.today) || t > clock.minutes + SAME_DAY_BUFFER_MINUTES)
+    .map((t) => ({ value: toValue(t), label: formatTime(toValue(t)) }));
 }
 
-// `today` must be the clinic's (Irish) date from clinicToday().
-export function isBookable(date, shift, today) {
+// `clock` must come from clinicClock() (Irish date and time).
+export function isBookable(date, shift, clock) {
   const day = startOfDay(date);
-  if (day < addDays(today, MIN_NOTICE_DAYS) || day > addDays(today, BOOKING_WINDOW_DAYS)) return false;
-  return slotsFor(day, shift).length > 0;
+  if (day < clock.today || day > addDays(clock.today, BOOKING_WINDOW_DAYS)) return false;
+  return slotsFor(day, shift, clock).length > 0;
 }
 
-export function firstBookableDate(shift, today) {
-  for (let i = MIN_NOTICE_DAYS; i <= BOOKING_WINDOW_DAYS; i += 1) {
-    const day = addDays(today, i);
-    if (isBookable(day, shift, today)) return day;
+export function firstBookableDate(shift, clock) {
+  for (let i = 0; i <= BOOKING_WINDOW_DAYS; i += 1) {
+    const day = addDays(clock.today, i);
+    if (isBookable(day, shift, clock)) return day;
   }
   return null;
 }

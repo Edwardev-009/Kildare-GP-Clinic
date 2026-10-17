@@ -5,7 +5,7 @@ import {
   ACTIVE_SHIFTS,
   APPOINTMENT_REASONS,
   SHIFTS,
-  clinicToday,
+  clinicClock,
   formatDateLong,
   slotsFor,
 } from "../data/appointments.js";
@@ -20,7 +20,7 @@ const shiftIcons = { morning: Sunrise, evening: Sunset };
 
 export default function AppointmentModal({ onClose }) {
   const closeRef = useRef(null);
-  const [today] = useState(() => clinicToday());
+  const [clock] = useState(() => clinicClock());
 
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
@@ -32,7 +32,7 @@ export default function AppointmentModal({ onClose }) {
   const [message, setMessage] = useState("");
   const [status, setStatus] = useState("idle"); // idle | sending | sent | error
 
-  const slots = useMemo(() => (shift && date ? slotsFor(date, shift) : []), [shift, date]);
+  const slots = useMemo(() => (shift && date ? slotsFor(date, shift, clock) : []), [shift, date, clock]);
   const selectedSlot = slots.find((slot) => slot.value === time);
   const shiftLabel = SHIFTS.find((s) => s.id === shift)?.label ?? "";
 
@@ -220,7 +220,7 @@ export default function AppointmentModal({ onClose }) {
               {shift && (
                 <fieldset className="appt-form__group">
                   <legend>Choose a date</legend>
-                  <BookingCalendar key={shift} shift={shift} today={today} selected={date} onSelect={chooseDate} />
+                  <BookingCalendar key={shift} shift={shift} clock={clock} selected={date} onSelect={chooseDate} />
                 </fieldset>
               )}
 

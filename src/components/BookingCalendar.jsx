@@ -14,10 +14,11 @@ const WEEKDAY_LABELS = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
 
 // Month calendar. Only days when the clinic is open for the chosen shift (and within the
 // booking window) can be selected; everything else is disabled.
-export default function BookingCalendar({ shift, today, selected, onSelect }) {
+export default function BookingCalendar({ shift, clock, selected, onSelect }) {
+  const { today } = clock;
   const firstMonth = monthStart(today);
   const lastMonth = monthStart(addDays(today, BOOKING_WINDOW_DAYS));
-  const [view, setView] = useState(() => monthStart(firstBookableDate(shift, today) ?? today));
+  const [view, setView] = useState(() => monthStart(firstBookableDate(shift, clock) ?? today));
 
   const year = view.getFullYear();
   const month = view.getMonth();
@@ -62,7 +63,7 @@ export default function BookingCalendar({ shift, today, selected, onSelect }) {
         ))}
         {cells.map((date, i) => {
           if (!date) return <span key={`blank-${i}`} />;
-          const available = isBookable(date, shift, today);
+          const available = isBookable(date, shift, clock);
           const isSelected = selected && sameDay(date, selected);
           return (
             <button
@@ -80,8 +81,7 @@ export default function BookingCalendar({ shift, today, selected, onSelect }) {
         })}
       </div>
       <p className="booking-cal__hint">
-        Highlighted days are available. Bookings open from tomorrow (Irish time), up to {BOOKING_WINDOW_DAYS} days
-        ahead.
+        Highlighted days are available, from today up to {BOOKING_WINDOW_DAYS} days ahead. Times are Irish time.
       </p>
     </div>
   );
