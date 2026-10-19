@@ -63,8 +63,7 @@ so it reads at full size instead of being squeezed into a half-width column.
   details and hours come from the same data as the visible pages. No invented
   ratings or clinician credentials are included. The complete physio guide
   receives `BlogPosting` markup; preview cards do not. Physio fees are not listed.
-- Hours: morning 10 AM–2 PM on Monday, Tuesday, Thursday, Friday and Saturday
-  (Wednesday and Sunday OFF); evening OFF every day for now. Edit `openingSchedule` to update the visible
+- Hours: morning 10 AM–2 PM, Monday to Saturday (Sunday OFF); evening OFF every day for now. Edit `openingSchedule` to update the visible
   hours, FAQ, JSON-LD and Markdown summaries together, then rebuild.
 - `robots.txt` permits crawling of public content and assets. Its wildcard
   already covers unlisted bots; named groups explicitly cover Google, Bing,

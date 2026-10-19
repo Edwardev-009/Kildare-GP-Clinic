@@ -363,14 +363,14 @@ try {
     assert.deepEqual(openingSchedule, [
       { day: "Monday", sessions: [{ opens: "10:00", closes: "14:00" }] },
       { day: "Tuesday", sessions: [{ opens: "10:00", closes: "14:00" }] },
-      { day: "Wednesday", sessions: [] },
+      { day: "Wednesday", sessions: [{ opens: "10:00", closes: "14:00" }] },
       { day: "Thursday", sessions: [{ opens: "10:00", closes: "14:00" }] },
       { day: "Friday", sessions: [{ opens: "10:00", closes: "14:00" }] },
       { day: "Saturday", sessions: [{ opens: "10:00", closes: "14:00" }] },
       { day: "Sunday", sessions: [] },
     ]);
     assert.equal(hoursMorning.find(({ day }) => day === "Saturday").time, "10:00 AM – 2:00 PM");
-    assert.equal(hoursMorning.find(({ day }) => day === "Wednesday").off, true);
+    assert.equal(hoursMorning.find(({ day }) => day === "Sunday").off, true);
     assert.equal(hoursEvening.every(({ off }) => off), true);
   });
   assert.deepEqual(allErrors, [], "No page errors or hydration failures");

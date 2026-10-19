@@ -14,7 +14,7 @@ Physiotherapy with Muqadas at Kildare Clinic on Claregate Street, Kildare Town. 
 
 ## Appointment hours
 
-Physiotherapy uses the same clinic hours. Monday–Tuesday: 10:00 AM – 2:00 PM. Wednesday: OFF. Thursday–Saturday: 10:00 AM – 2:00 PM. Sunday: OFF. Contact the clinic to confirm current opening hours, waiting times and service availability before travelling. Confirm a physiotherapy appointment before travelling; a walk-in GP visit does not guarantee an immediately available physio slot.
+Physiotherapy uses the same clinic hours. Monday–Saturday: 10:00 AM – 2:00 PM. Sunday: OFF. Contact the clinic to confirm current opening hours, waiting times and service availability before travelling. Confirm a physiotherapy appointment before travelling; a walk-in GP visit does not guarantee an immediately available physio slot.
 
 ## Preparing for your appointment
 
