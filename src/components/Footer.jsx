@@ -23,6 +23,20 @@ export default function Footer() {
             A walk-in GP practice on Claregate Street, Kildare - general practice,
             family healthcare and chronic condition management for the local community.
           </p>
+          <a
+            className="site-footer__badge"
+            href="https://locallyirish.ie/best-of/healthcare/kildare"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <img
+              src="https://locallyirish.ie/api/badge/top-rated/kildare-clinic-gp-walk-in-medical-centre"
+              alt="Kildare Clinic GP Walk-In Medical Centre - #1 Top Rated Healthcare & Medical in Co. Kildare 2026 on LocallyIrish.ie"
+              width="240"
+              height="64"
+              loading="lazy"
+            />
+          </a>
           <nav className="site-footer__social" aria-label="Social media">
             <a href="https://www.instagram.com/kildaregp/" target="_blank" rel="noopener noreferrer">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true" focusable="false">
@@ -73,6 +87,20 @@ export default function Footer() {
           <div className="site-footer__hours">
             <div className="site-footer__shift"><p>{hoursSummary}</p></div>
           </div>
+          <a
+            className="site-footer__award"
+            href="https://locallyirish.ie/best-of/healthcare/kildare"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <img
+              src="/images/kildare-clinic-gp-walk-in-medical-centre-top-rated-2026-square.png"
+              alt="Kildare Clinic GP Walk-In Medical Centre - #1 Top Rated Healthcare & Medical in Co. Kildare 2026 on LocallyIrish.ie"
+              width="1080"
+              height="1080"
+              loading="lazy"
+            />
+          </a>
         </div>
       </div>
 
