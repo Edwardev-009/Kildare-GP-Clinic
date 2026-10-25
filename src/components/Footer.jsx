@@ -87,6 +87,20 @@ export default function Footer() {
           <div className="site-footer__hours">
             <div className="site-footer__shift"><p>{hoursSummary}</p></div>
           </div>
+          <a
+            className="site-footer__award"
+            href="https://locallyirish.ie/best-of/healthcare/kildare"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <img
+              src="/images/kildare-clinic-gp-walk-in-medical-centre-top-rated-2026-square.png"
+              alt="Kildare Clinic GP Walk-In Medical Centre - #1 Top Rated Healthcare & Medical in Co. Kildare 2026 on LocallyIrish.ie"
+              width="1080"
+              height="1080"
+              loading="lazy"
+            />
+          </a>
         </div>
       </div>
 
