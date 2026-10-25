@@ -25,6 +25,19 @@
   max-width: 320px;
 }
 
+.site-footer__badge {
+  display: inline-block;
+  width: 240px;
+  height: 64px;
+  margin-top: 22px;
+}
+
+.site-footer__badge img {
+  display: block;
+  width: 240px;
+  height: 64px;
+}
+
 .site-footer__social {
   display: flex;
   flex-wrap: wrap;
