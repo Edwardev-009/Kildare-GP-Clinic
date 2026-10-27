@@ -8,7 +8,7 @@ The resources below are concise Markdown summaries of the public website. No ind
 
 ## Clinic information
 
-- [Home](https://www.kildaredoc.ie/index.md): Looking for a GP in Kildare? Visit Kildare Clinic on Claregate Street for walk-in GP care, family healthcare and physio appointments. Call 085 867 8192.
+- [Home](https://www.kildaredoc.ie/index.md): Looking for a GP in Kildare? Visit Kildare Clinic on Claregate Street for walk-in and online GP care, family healthcare and physio appointments. Call 085 867 8192.
 - [About](https://www.kildaredoc.ie/about.md): Learn about Kildare Clinic, a walk-in GP practice on Claregate Street, Kildare, and its approach to healthcare for the local community.
 - [Health Notes](https://www.kildaredoc.ie/blog.md): Read Kildare Clinic's first physio appointment guide and browse health note previews on family health, seasonal care and long-term conditions.
 - [Physiotherapy](https://www.kildaredoc.ie/physiotherapy.md): Physiotherapy with Muqadas at Kildare Clinic on Claregate Street, Kildare Town. Call the clinic to discuss your needs and arrange a physio appointment.

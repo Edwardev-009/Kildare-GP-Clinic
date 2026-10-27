@@ -10,7 +10,7 @@ export const BOOKING_WINDOW_DAYS = 30; // how far ahead a patient can book
 // Raise this to stop bookings some minutes before a slot starts (e.g. 30 = no booking in the last 30 min).
 export const SAME_DAY_BUFFER_MINUTES = 0;
 export const CLINIC_TIME_ZONE = "Europe/Dublin"; // "today" is always the date in Kildare, Ireland
-export const SLOT_MINUTES = 30; // length of one appointment slot
+export const SLOT_MINUTES = 20; // length of one appointment slot
 
 export const SHIFTS = [
   { id: "morning", label: "Morning" },

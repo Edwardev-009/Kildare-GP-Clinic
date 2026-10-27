@@ -50,4 +50,4 @@ Call 085 867 8192 or WhatsApp reception to arrange physiotherapy with Muqadas. P
 
 - [HSE: Back pain — when to contact a GP](https://www2.hse.ie/conditions/back-pain/)
 
-[Physiotherapy appointments](https://www.kildaredoc.ie/physiotherapy) | [Walk-in GP in Kildare](https://www.kildaredoc.ie/)
+[Physiotherapy appointments](https://www.kildaredoc.ie/physiotherapy) | [Walk-in & Online GP in Kildare](https://www.kildaredoc.ie/)

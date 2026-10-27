@@ -9,8 +9,8 @@ export const pages = [
   {
     path: "/",
     label: "Home",
-    title: "Kildare GP – Walk-In Doctor in Kildare Town",
-    description: "Looking for a GP in Kildare? Visit Kildare Clinic on Claregate Street for walk-in GP care, family healthcare and physio appointments. Call 085 867 8192.",
+    title: "Kildare GP – Walk-In & Online Doctor in Kildare Town",
+    description: "Looking for a GP in Kildare? Visit Kildare Clinic on Claregate Street for walk-in and online GP care, family healthcare and physio appointments. Call 085 867 8192.",
     type: "WebPage",
   },
   {

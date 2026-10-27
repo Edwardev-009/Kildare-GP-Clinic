@@ -77,7 +77,7 @@ export default function Home() {
             </span>
             
             <h1>
-              Walk-in GP in Kildare Town.
+              Walk-in &amp; Online GP in Kildare Town.
             </h1>
             <p className="hero__lede">
               Kildare Clinic provides GP consultations and family healthcare on
