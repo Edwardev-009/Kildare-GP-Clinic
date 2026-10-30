@@ -29,7 +29,7 @@ export const openingSchedule = [
   { day: "Tuesday", sessions: [{ opens: "10:00", closes: "14:00" }, { opens: "17:00", closes: "20:00" }] },
   { day: "Wednesday", sessions: [{ opens: "10:00", closes: "14:00" }, { opens: "17:00", closes: "20:00" }] },
   { day: "Thursday", sessions: [{ opens: "10:00", closes: "14:00" }, { opens: "17:00", closes: "20:00" }] },
-  { day: "Friday", sessions: [{ opens: "10:00", closes: "14:00" }, { opens: "17:00", closes: "20:00" }] },
+  { day: "Friday", sessions: [{ opens: "10:00", closes: "14:00" }, { opens: "16:00", closes: "18:00" }] },
   { day: "Saturday", sessions: [{ opens: "10:00", closes: "14:00" }, { opens: "17:00", closes: "20:00" }] },
   { day: "Sunday", sessions: [] },
 ];
