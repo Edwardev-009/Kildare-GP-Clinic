@@ -31,7 +31,7 @@ export const openingSchedule = [
   { day: "Thursday", sessions: [{ opens: "10:00", closes: "14:00" }, { opens: "17:00", closes: "20:00" }] },
   { day: "Friday", sessions: [{ opens: "10:00", closes: "14:00" }, { opens: "16:00", closes: "18:00" }] },
   { day: "Saturday", sessions: [{ opens: "10:00", closes: "14:00" }, { opens: "17:00", closes: "20:00" }] },
-  { day: "Sunday", sessions: [] },
+  { day: "Sunday", sessions: [{ opens: "17:00", closes: "19:00" }] },
 ];
 
 export function formatTime(value) {

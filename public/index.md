@@ -36,7 +36,7 @@ Physiotherapy with Muqadas at our Claregate Street clinic. Contact reception to 
 
 ## Plan a visit
 
-Walk in or call ahead. Register at the front desk, see the doctor and discuss the next steps for your care. Monday–Saturday: 10:00 AM – 2:00 PM & 5:00 PM – 8:00 PM. Sunday: OFF. Contact the clinic to confirm current opening hours, waiting times and service availability before travelling.
+Walk in or call ahead. Register at the front desk, see the doctor and discuss the next steps for your care. Monday–Thursday: 10:00 AM – 2:00 PM & 5:00 PM – 8:00 PM. Friday: 10:00 AM – 2:00 PM & 4:00 PM – 6:00 PM. Saturday: 10:00 AM – 2:00 PM & 5:00 PM – 8:00 PM. Sunday: 5:00 PM – 7:00 PM. Contact the clinic to confirm current opening hours, waiting times and service availability before travelling.
 
 ## Location question
 
