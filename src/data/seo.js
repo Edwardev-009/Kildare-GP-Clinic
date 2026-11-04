@@ -17,7 +17,7 @@ export const pages = [
     path: "/about",
     label: "About",
     title: "Our GP & Physiotherapy Team in Kildare",
-    description: "Learn about Kildare Clinic, a walk-in GP practice on Claregate Street, Kildare, and its approach to healthcare for the local community.",
+    description: "Learn about Kildare Clinic, a walk-in and online GP practice on Claregate Street, Kildare, and its approach to healthcare for the local community.",
     type: "AboutPage",
   },
   {
