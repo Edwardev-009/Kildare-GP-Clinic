@@ -1,11 +1,13 @@
 import { NavLink } from "react-router-dom";
 import { Cross, MapPin, Phone, Mail } from "lucide-react";
-import { clinic, hoursSummary } from "../data/content.js";
+import { clinic } from "../data/content.js";
+import { useClinicHours } from "../lib/clinic-hours-context.js";
 import ConsentMap from "./ConsentMap.jsx";
 import { useCookieConsent } from "../lib/cookie-context.js";
 import "./Footer.css";
 
 export default function Footer() {
+  const { hoursSummary } = useClinicHours();
   const { openSettings } = useCookieConsent();
   return (
     <footer className="site-footer">
@@ -120,6 +122,7 @@ export default function Footer() {
       <div className="container site-footer__bottom">
         <p>&copy; {new Date().getFullYear()} {clinic.name}. All rights reserved.</p>
         <div className="site-footer__cookies">
+          <NavLink to="/privacy">Privacy policy</NavLink>
           <NavLink to="/cookies">Cookie information</NavLink>
           <button type="button" onClick={openSettings}>Cookie settings</button>
         </div>

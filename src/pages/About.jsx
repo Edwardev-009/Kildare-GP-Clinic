@@ -4,7 +4,8 @@ import Seo from "../components/Seo.jsx";
 import { Link } from "react-router-dom";
 import reception from "../assets/reception.webp";
 import doorOpen from "../assets/door-open.jpeg";
-import { clinic, hours, whatsappLink, team } from "../data/content.js";
+import { clinic, whatsappLink, team } from "../data/content.js";
+import { useClinicHours } from "../lib/clinic-hours-context.js";
 import "./About.css";
 
 const values = [
@@ -26,6 +27,7 @@ const values = [
 ];
 
 export default function About() {
+  const { hours } = useClinicHours();
   return (
     <>
       <Seo path="/about" />

@@ -1,0 +1,6 @@
+{
+  "rewrites": [
+    { "source": "/appointment/:token", "destination": "/appointment/index.html" },
+    { "source": "/(.*)", "destination": "/index.html" }
+  ]
+}

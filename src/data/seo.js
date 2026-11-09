@@ -46,8 +46,15 @@ export const pages = [
   {
     path: "/medical-certificate",
     label: "Medical Certificate",
-    title: "Medical Certificate in Kildare",
-    description: "Sick, travel and return-to-work medical certificates from Irish-registered GPs at Kildare Clinic. €50 per certificate; visit the clinic to be examined by a doctor.",
+    title: "Online Medical Certificate Ireland – Sick Note Online €25",
+    description: "Get a medical certificate online in Ireland for €25. Sick, travel and return-to-work certificates from Irish-registered GPs, no clinic visit needed. Pay online, a doctor calls you, certificate sent within 1–2 hours.",
+    type: "WebPage",
+  },
+  {
+    path: "/book",
+    label: "Book Online",
+    title: "Book a GP or Blood Test Appointment Online in Kildare",
+    description: "Book a GP appointment or a Friday blood test online at Kildare Clinic, Claregate Street. Choose a morning or evening time, then pay online or at the clinic.",
     type: "WebPage",
   },
   {
@@ -64,6 +71,20 @@ export const pages = [
     description: "Learn about Kildare Clinic’s cookie choices, optional Google Analytics and Maps, browser storage and how to change or withdraw your choice.",
     type: "WebPage",
   },
+  {
+    path: "/privacy",
+    label: "Privacy",
+    title: "Privacy Policy",
+    description: "How Kildare Clinic uses the personal information you give through its website for appointments, online medical certificates, payments and contact forms, and your data protection rights.",
+    type: "WebPage",
+  },
+];
+
+// Pages that exist for patients only (links from emails and payment providers). They are prerendered
+// but kept out of the sitemap and marked noindex.
+export const utilityPages = [
+  { path: "/appointment", title: "Your appointment" },
+  { path: "/payment-result", title: "Payment status" },
 ];
 
 export function pageSeo(path) {

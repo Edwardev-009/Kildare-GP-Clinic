@@ -11,6 +11,7 @@ import {
   Stethoscope,
   MessageCircle,
   Phone,
+  Clock3,
 } from "lucide-react";
 import PageHeader from "../components/PageHeader.jsx";
 import Seo from "../components/Seo.jsx";
@@ -26,7 +27,8 @@ import {
   certificateWhen,
   certificateFaqs,
   CERTIFICATE_PRICE,
-  CERTIFICATE_VISIT_NOTE,
+  CERTIFICATE_ONLINE_NOTE,
+  CERTIFICATE_TURNAROUND,
 } from "../data/certificates.js";
 import "./MedicalCertificate.css";
 
@@ -34,7 +36,8 @@ const icons = { Thermometer, PlaneTakeoff, PlaneLanding, BriefcaseMedical };
 
 const trust = [
   { icon: ShieldCheck, text: "Seen by Irish-registered GPs" },
-  { icon: Stethoscope, text: "Examined in person at the clinic" },
+  { icon: Stethoscope, text: "No clinic visit needed" },
+  { icon: Clock3, text: `Certificate ${CERTIFICATE_TURNAROUND} of your doctor's call` },
   { icon: FileCheck2, text: `€${CERTIFICATE_PRICE} for every certificate` },
 ];
 
@@ -48,7 +51,7 @@ export default function MedicalCertificate() {
       <PageHeader
         eyebrow="Medical Certificates"
         title="Medical certificates at Kildare Clinic"
-        lede="Sick, travel and return-to-work certificates from Irish-registered GPs at Kildare Clinic. Visit the clinic, see the doctor and, if a certificate is applicable, it will be issued."
+        lede="Get a sick note, travel or return-to-work certificate online for €25. No clinic visit: request and pay online, an Irish-registered GP phones you, and your certificate is sent by email or WhatsApp within 1–2 hours."
       />
 
       {/* ---------- Trust strip ---------- */}
@@ -69,7 +72,7 @@ export default function MedicalCertificate() {
           <div className="section-head">
             <span className="eyebrow">Choose a certificate</span>
             <h2>Which medical certificate do you need?</h2>
-            <p>Pick the certificate that matches your situation. You'll need to visit the clinic so a doctor can examine you.</p>
+            <p>Pick the certificate that matches your situation, pay online and a doctor will call you. You do not need to visit the clinic.</p>
           </div>
 
           <div className="cert-grid">
@@ -84,13 +87,13 @@ export default function MedicalCertificate() {
                     <div className="cert-card__price">
                       <strong>€{cert.price}</strong>
                       <span>
-                        <Stethoscope size={14} /> {CERTIFICATE_VISIT_NOTE}
+                        <Stethoscope size={14} /> {CERTIFICATE_ONLINE_NOTE}
                       </span>
                     </div>
                   </div>
                   <h3>{cert.title}</h3>
                   <p className="cert-card__summary">{cert.summary}</p>
-                  <p className="cert-card__time">Issued by the doctor after an in-person examination, if applicable.</p>
+                  <p className="cert-card__time">A doctor phones you, then your certificate is sent {CERTIFICATE_TURNAROUND} if appropriate.</p>
                   <ul className="cert-card__points">
                     {cert.points.map((point) => (
                       <li key={point}>
@@ -99,7 +102,7 @@ export default function MedicalCertificate() {
                     ))}
                   </ul>
                   <button type="button" className="btn btn-primary cert-card__btn" onClick={() => setActive(cert)}>
-                    Request {cert.title.split(" / ")[0]}
+                    Get {cert.title.split(" / ")[0]} Now
                   </button>
                 </article>
               );
@@ -118,8 +121,8 @@ export default function MedicalCertificate() {
             <span className="eyebrow">How it works</span>
             <h2>How to get your medical certificate</h2>
             <p className="cert-how__lede">
-              Visit Kildare Clinic and a GP will examine you. If a certificate is applicable in your
-              case, the doctor will issue it.
+              Everything is done online and by phone. Pay online, speak to a GP and, if a certificate
+              is appropriate, receive it by email or WhatsApp.
             </p>
             <ol className="cert-steps">
               {certificateSteps.map((step, i) => (
@@ -132,6 +135,28 @@ export default function MedicalCertificate() {
                 </li>
               ))}
             </ol>
+          </div>
+        </div>
+      </section>
+
+      {/* ---------- SEO copy ---------- */}
+      <section className="section">
+        <div className="container">
+          <div>
+            <span className="eyebrow">Online sick note in Ireland</span>
+            <h2>Online medical certificate from Irish-registered GPs</h2>
+            <p>
+              If you are unwell and need a sick note for your employer, college or school, or a certificate
+              for travel, you can request one online from Kildare Clinic without taking time to visit a surgery.
+              Our Irish-registered GPs speak to you by phone, ask about your symptoms and the reason for the
+              certificate, and issue it where it is clinically appropriate.
+            </p> <br />
+            <p>
+              A sick certificate, an unfit-to-travel or fit-to-travel certificate and a return-to-work (fit for work)
+              certificate each cost €{CERTIFICATE_PRICE}. You pay securely online by card, Apple Pay, Google Pay or PayPal.
+              If the doctor decides a certificate cannot be issued, you are refunded in full. We cannot issue
+              backdated certificates.
+            </p>
           </div>
         </div>
       </section>

@@ -188,7 +188,7 @@
 
 .service-card {
   background: var(--paper);
-  padding: 34px 28px;
+  padding: 34px 14px;
   display: flex;
   flex-direction: column;
   gap: 14px;
@@ -403,3 +403,19 @@
     gap: 16px;
   }
 }
+
+/* ---- services: call-to-action buttons and the online certificate band ---- */
+/* Cards in a row share one height, so the button is pushed to the bottom of its card: the certificate and
+   blood test buttons then sit on the same line however long the text above them is. */
+.service-card__btn { margin-top: auto; }
+.service-card p:has(+ .service-card__btn) { margin-bottom: 6px; } /* keeps the old 20px space above the button */
+
+.home-cert__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+  flex-wrap: wrap;
+}
+.home-cert__inner > div { max-width: 700px; }
+.home-cert__inner p { margin: 8px 0 0; }

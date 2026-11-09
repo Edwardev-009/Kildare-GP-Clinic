@@ -3,11 +3,13 @@ import { Phone, MessageCircle, MapPin, ArrowRight } from "lucide-react";
 import Seo from "../components/Seo.jsx";
 import PageHeader from "../components/PageHeader.jsx";
 import Faq from "../components/Faq.jsx";
-import { clinic, hours, whatsappLink } from "../data/content.js";
+import { clinic, whatsappLink } from "../data/content.js";
+import { useClinicHours } from "../lib/clinic-hours-context.js";
 import { physioPath, physiotherapist, physioDescription, physioSteps, physioFaqs, physioArticle } from "../data/physio.js";
 import "./Physiotherapy.css";
 
 export default function Physiotherapy() {
+  const { hours } = useClinicHours();
   return (
     <>
       <Seo path={physioPath} />

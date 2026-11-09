@@ -5,7 +5,7 @@ import { StaticRouter } from "react-router-dom";
 import { HelmetProvider } from "react-helmet-async";
 import App from "./App.jsx";
 
-export { pages, SITE_URL, markdownPath } from "./data/seo.js";
+export { pages, utilityPages, SITE_URL, markdownPath } from "./data/seo.js";
 export { discoveryFiles } from "./data/discovery.js";
 
 // React 19 hoists the page's title, meta and link elements into this head.

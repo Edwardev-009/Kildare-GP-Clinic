@@ -1,0 +1,114 @@
+/* Online booking page (/book). Reuses the .appt-* and .booking-cal* styles from AppointmentModal.css. */
+
+.bk { max-width: 860px; }
+
+.bk-demo {
+  margin: 0 0 20px;
+  padding: 10px 14px;
+  border: 1px dashed var(--brass-600);
+  border-radius: var(--radius-sm);
+  background: var(--brass-100);
+  font-size: 0.9rem;
+}
+
+.bk-steps {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 8px;
+  margin: 0 0 32px;
+  padding: 0;
+  list-style: none;
+}
+.bk-steps li {
+  border-top: 3px solid var(--line-strong);
+  padding-top: 8px;
+  font-size: 0.8rem;
+  color: var(--ink-soft);
+}
+.bk-steps li.is-done { border-color: var(--brass-500); }
+.bk-steps li.is-current { border-color: var(--navy-900); color: var(--navy-900); font-weight: 700; }
+
+.bk-h { font-size: 1.5rem; margin: 0 0 8px; }
+.bk-sub { color: var(--ink-soft); font-size: 0.95rem; margin: 0 0 20px; }
+.bk-notice { margin-bottom: 20px; }
+.bk-loading { display: flex; align-items: center; gap: 10px; color: var(--ink-soft); }
+.bk-empty { padding: 16px; border: 1px solid var(--line); border-radius: var(--radius-md); background: #fff; }
+.bk-empty p { margin: 0 0 10px; }
+
+.bk-options { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 12px; }
+.bk-option {
+  display: flex; flex-direction: column; gap: 6px; text-align: left;
+  padding: 16px; background: #fff; color: var(--ink);
+  border: 1px solid var(--line-strong); border-radius: var(--radius-md); cursor: pointer;
+  font-family: inherit;
+}
+.bk-option:hover { border-color: var(--navy-900); }
+.bk-option.is-selected { border-color: var(--brass-500); box-shadow: 0 0 0 2px var(--brass-500); }
+.bk-option__title { display: flex; align-items: center; gap: 8px; font-weight: 700; color: var(--navy-900); }
+.bk-option__text { font-size: 0.88rem; color: var(--ink-soft); }
+.bk-option__meta { display: flex; align-items: center; gap: 6px; font-size: 0.82rem; color: var(--ink-soft); margin-top: 4px; }
+
+.bk-shifts { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.bk-shift {
+  display: flex; flex-direction: column; gap: 6px; text-align: left;
+  padding: 18px; background: #fff; color: var(--ink); font-family: inherit;
+  border: 1px solid var(--line-strong); border-radius: var(--radius-md); cursor: pointer;
+}
+.bk-shift:hover:not(:disabled) { border-color: var(--navy-900); }
+.bk-shift:disabled { opacity: 0.55; cursor: not-allowed; }
+.bk-shift.is-selected { background: var(--navy-900); border-color: var(--navy-900); color: #fff; }
+.bk-shift__head { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 1.05rem; }
+.bk-shift.is-selected .bk-shift__head { color: var(--brass-300); }
+.bk-shift__doc { font-size: 0.95rem; }
+.bk-shift__next { font-size: 0.8rem; opacity: 0.75; }
+
+.bk-datetime { display: grid; grid-template-columns: minmax(280px, 340px) 1fr; gap: 28px; align-items: start; }
+.bk-times__day { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink-soft); margin: 0 0 12px; }
+.bk-slot__doc { display: block; font-size: 0.68rem; font-weight: 500; opacity: 0.75; }
+
+.bk-nav {
+  display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  margin-top: 28px; padding-top: 20px; border-top: 1px solid var(--line);
+}
+.bk-back { background: none; border: none; padding: 8px 4px; font: inherit; color: var(--navy-900); text-decoration: underline; text-underline-offset: 4px; cursor: pointer; }
+.bk-nav .btn:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+
+.bk-err { color: #9b1c1c; font-size: 0.82rem; font-weight: 500; }
+.bk-hint { color: var(--ink-soft); font-size: 0.8rem; font-weight: 400; }
+.bk-opt { font-weight: 400; color: var(--ink-soft); }
+.bk-radios { display: flex; flex-wrap: wrap; gap: 10px; }
+.appt-form label.bk-radio {
+  flex-direction: row; align-items: center; gap: 8px; font-weight: 500;
+  padding: 10px 14px; background: #fff; border: 1px solid var(--line-strong); border-radius: var(--radius-sm); cursor: pointer;
+}
+.appt-form label.bk-consent { flex-direction: row; align-items: flex-start; gap: 10px; font-weight: 400; cursor: pointer; }
+.bk-consent input { margin-top: 4px; }
+
+.bk-summary { margin: 0 0 24px; padding: 16px; background: #fff; border: 1px solid var(--line); border-radius: var(--radius-md); }
+.bk-summary div { display: flex; justify-content: space-between; gap: 16px; padding: 6px 0; border-bottom: 1px solid var(--line); }
+.bk-summary div:last-child { border-bottom: none; }
+.bk-summary dt { color: var(--ink-soft); }
+.bk-summary dd { margin: 0; text-align: right; }
+
+.bk-pay { display: grid; gap: 12px; }
+.appt-form label.bk-pay__opt {
+  flex-direction: row; align-items: flex-start; gap: 12px; font-weight: 400; cursor: pointer;
+  padding: 16px; background: #fff; border: 1px solid var(--line-strong); border-radius: var(--radius-md);
+}
+.bk-pay__opt.is-selected { border-color: var(--brass-500); box-shadow: 0 0 0 2px var(--brass-500); }
+.bk-pay__opt input { margin-top: 5px; }
+.bk-pay__opt span { display: flex; flex-direction: column; gap: 3px; }
+.bk-pay__opt strong { display: inline-flex; align-items: center; gap: 8px; color: var(--navy-900); }
+.bk-pay__opt small { color: var(--ink-soft); font-size: 0.85rem; }
+
+.bk-turnstile { margin-top: 8px; }
+.bk-done { margin: 0 auto; }
+.bk-info { margin-top: 40px; font-size: 0.9rem; color: var(--ink-soft); }
+.bk-info summary { cursor: pointer; font-weight: 600; color: var(--navy-900); }
+
+@media (max-width: 720px) {
+  .bk-steps { grid-template-columns: 1fr; gap: 4px; }
+  .bk-steps li { display: none; }
+  .bk-steps li.is-current { display: block; }
+  .bk-shifts, .bk-datetime { grid-template-columns: 1fr; }
+}

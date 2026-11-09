@@ -12,8 +12,13 @@ import { physioPath, physioArticle } from "./data/physio.js";
 import Contact from "./pages/Contact.jsx";
 import MedicalCertificate from "./pages/MedicalCertificate.jsx";
 import CookiePolicy from "./pages/CookiePolicy.jsx";
+import Book from "./pages/Book.jsx";
+import ManageAppointment from "./pages/ManageAppointment.jsx";
+import PaymentResult from "./pages/PaymentResult.jsx";
 import { CookieConsentProvider } from "./components/CookieConsent.jsx";
 import AppointmentProvider from "./components/AppointmentProvider.jsx";
+import ClinicHoursProvider from "./components/ClinicHoursProvider.jsx";
+import Privacy from "./pages/Privacy.jsx";
 import Seo from "./components/Seo.jsx";
 import PageHeader from "./components/PageHeader.jsx";
 
@@ -38,6 +43,7 @@ function ScrollToTop() {
 export default function App() {
   return (
     <CookieConsentProvider>
+      <ClinicHoursProvider>
       <AppointmentProvider>
         <a href="#main" className="skip-link">
           Skip to main content
@@ -53,13 +59,19 @@ export default function App() {
             <Route path={physioArticle.path} element={<PhysioArticle />} />
             <Route path="/medical-certificate" element={<MedicalCertificate />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/book" element={<Book />} />
+            <Route path="/appointment" element={<ManageAppointment />} />
+            <Route path="/appointment/:token" element={<ManageAppointment />} />
+            <Route path="/payment-result" element={<PaymentResult />} />
             <Route path="/cookies" element={<CookiePolicy />} />
+            <Route path="/privacy" element={<Privacy />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </main>
         <Footer />
         <WhatsAppFab />
       </AppointmentProvider>
+      </ClinicHoursProvider>
     </CookieConsentProvider>
   );
 }

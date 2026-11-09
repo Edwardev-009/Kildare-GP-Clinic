@@ -12,14 +12,14 @@ await build({
   },
 });
 
-const { render, pages, discoveryFiles } = await import(pathToFileURL(resolve("dist-ssr/entry-server.js")).href);
+const { render, pages, utilityPages, discoveryFiles } = await import(pathToFileURL(resolve("dist-ssr/entry-server.js")).href);
 const template = await readFile("dist/index.html", "utf8");
 const sharedHead = template.match(/<head>([\s\S]*?)<\/head>/)[1];
 const scripts = [...template.matchAll(/<script\b[^>]*type="module"[^>]*>[\s\S]*?<\/script>/g)].map(([tag]) => tag).join("\n");
 // Vite places module scripts in the template head; keep exactly one copy in body.
 const head = sharedHead.replace(/<script\b[^>]*type="module"[^>]*>[\s\S]*?<\/script>/g, "");
 
-for (const page of [...pages, { path: "/404" }]) {
+for (const page of [...pages, ...utilityPages, { path: "/404" }]) {
   const html = `<!doctype html>\n${render(page.path)}`
     .replace("<head>", `<head>${head}`)
     .replace("</body>", `${scripts}</body>`);

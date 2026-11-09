@@ -1,12 +1,21 @@
 import { Helmet } from "react-helmet-async";
 import { clinic } from "../data/content.js";
-import { SITE_URL, ROBOTS, pageSeo, structuredData, markdownPath } from "../data/seo.js";
+import { SITE_URL, ROBOTS, pageSeo, structuredData, markdownPath, utilityPages } from "../data/seo.js";
 
 const SITE_NAME = clinic.name;
 const DEFAULT_IMAGE = `${SITE_URL}/social-preview.webp`;
 
 export default function Seo({ path = "/" }) {
   const page = pageSeo(path);
+  const utility = utilityPages.find((u) => u.path === path);
+  if (utility) {
+    return (
+      <Helmet>
+        <title>{utility.title} | {SITE_NAME}</title>
+        <meta name="robots" content="noindex, nofollow" />
+      </Helmet>
+    );
+  }
   if (!page) {
     return (
       <Helmet>

@@ -3,11 +3,13 @@ import PageHeader from "../components/PageHeader.jsx";
 import Seo from "../components/Seo.jsx";
 import ContactForm from "../components/ContactForm.jsx";
 import ConsentMap from "../components/ConsentMap.jsx";
-import { clinic, hoursMorning, hoursEvening, whatsappLink } from "../data/content.js";
+import { clinic, whatsappLink } from "../data/content.js";
+import { useClinicHours } from "../lib/clinic-hours-context.js";
 import { useAppointment } from "../lib/appointment-context.js";
 import "./Contact.css";
 
 export default function Contact() {
+  const { hoursMorning, hoursEvening } = useClinicHours();
   const { openAppointment } = useAppointment();
   const mapSrc = `https://maps.google.com/maps?q=${encodeURIComponent(
     clinic.address

@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react";
 import { X } from "lucide-react";
-import ContactForm from "./ContactForm.jsx";
-import { CERTIFICATE_REASON, CERTIFICATE_VISIT_NOTE } from "../data/certificates.js";
+import CertificateRequestForm from "./CertificateRequestForm.jsx";
+import { CERTIFICATE_ONLINE_NOTE } from "../data/certificates.js";
 import "./CertificateModal.css";
 
 export default function CertificateModal({ certificate, onClose }) {
@@ -33,12 +33,12 @@ export default function CertificateModal({ certificate, onClose }) {
         <button ref={closeRef} type="button" className="cert-modal__close" onClick={onClose} aria-label="Close form">
           <X size={20} />
         </button>
-        <span className="eyebrow">Medical certificate request</span>
+        <span className="eyebrow">Online medical certificate</span>
         <h2 id="cert-modal-title">{certificate.title}</h2>
         <p className="cert-modal__meta">
-          €{certificate.price} · {CERTIFICATE_VISIT_NOTE}
+          €{certificate.price} · {CERTIFICATE_ONLINE_NOTE}
         </p>
-        <ContactForm compact initialReason={CERTIFICATE_REASON} initialCertificate={certificate.id} />
+        <CertificateRequestForm certificate={certificate} />
       </div>
     </div>
   );

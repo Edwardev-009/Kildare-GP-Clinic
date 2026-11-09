@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { Send, CheckCircle2, Loader2 } from "lucide-react";
 import {
   CERTIFICATE_REASON,
@@ -17,7 +18,6 @@ const reasons = [
   "Book a walk-in visit",
   "Vaccinations & travel advice",
   "Chronic condition follow-up",
-  CERTIFICATE_REASON,
   "Something else",
 ];
 
@@ -95,10 +95,9 @@ export default function ContactForm({
           <>
             <h3>Request received</h3>
             <p>
-              Thanks, we've received your request. To get a certificate you'll
-              need to visit the clinic, where the doctor will examine you and,
-              if it's applicable, issue it. For anything urgent, please call or
-              WhatsApp us directly.
+              Thanks, we've received your request. For a certificate, please use the
+              online request on our Medical Certificate page. For anything urgent,
+              please call or WhatsApp us directly.
             </p>
           </>
         ) : (
@@ -218,6 +217,10 @@ export default function ContactForm({
           Sorry, we couldn't send your message. Please try again, or call or WhatsApp the clinic directly.
         </p>
       )}
+
+      <p style={{ fontSize: "0.8rem", opacity: 0.8, margin: "0 0 12px" }}>
+        We use your details only to reply to your message. See our <Link to="/privacy">Privacy Policy</Link>.
+      </p>
 
       <button type="submit" className="btn btn-primary" disabled={sending}>
         {sending ? (

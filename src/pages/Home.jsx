@@ -14,6 +14,8 @@ import {
   ArrowRight,
   Phone,
   Activity,
+  FileCheck2,
+  Droplets,
 } from "lucide-react";
 import { Link } from "react-router-dom";
 import GallerySlider from "../components/GallerySlider.jsx";
@@ -28,18 +30,16 @@ import galleryReception from "../assets/gallery-reception.webp";
 import galleryWaiting from "../assets/gallery-waiting-area.webp";
 import {
   clinic,
-  hoursMorning,
-  hoursEvening,
-  openingDaysLabel,
   services,
   process,
   team,
   testimonials,
   faqs,
 } from "../data/content.js";
+import { useClinicHours } from "../lib/clinic-hours-context.js";
 import "./Home.css";
 
-const icons = { Stethoscope, Users, Plane, ClipboardCheck, Activity };
+const icons = { Stethoscope, Users, Plane, ClipboardCheck, Activity, FileCheck2, Droplets };
 
 const gallerySlides = [
   {
@@ -64,6 +64,7 @@ const gallerySlides = [
 ];
 
 export default function Home() {
+  const { hoursMorning, hoursEvening, openingDaysLabel } = useClinicHours();
   const { openAppointment } = useAppointment();
   return (
     <>
@@ -176,11 +177,29 @@ export default function Home() {
                   <Icon size={26} strokeWidth={1.8} />
                   <h3>{s.title}</h3>
                   <p>{s.text}</p>
-                  {s.path && <Link className="service-card__link" to={s.path}>Physiotherapy in Kildare <ArrowRight size={16} /></Link>}
+                  {s.path && s.cta && <Link className="btn btn-primary service-card__btn" to={s.path}>{s.linkLabel}</Link>}
+                  {s.path && !s.cta && <Link className="service-card__link" to={s.path}>{s.linkLabel} <ArrowRight size={16} /></Link>}
                 </div>
               );
             })}
           </div>
+        </div>
+      </section>
+
+      {/* ---------- Online medical certificate ---------- */}
+      <section className="section section--navy home-cert">
+        <div className="container home-cert__inner">
+          <div>
+            <span className="eyebrow">Online medical certificate</span>
+            <h2>Need a medical certificate? Get it online, no clinic visit.</h2>
+            <p>
+              Sick note, travel or return-to-work certificate for €25. Request and pay online, a doctor calls you,
+              and your certificate is sent by email or WhatsApp within 1–2 hours.
+            </p>
+          </div>
+          <Link className="btn btn-gold" to="/medical-certificate">
+            <FileCheck2 size={18} /> Get a certificate online
+          </Link>
         </div>
       </section>
 

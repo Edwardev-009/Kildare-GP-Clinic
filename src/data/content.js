@@ -43,40 +43,67 @@ const formatSessions = (sessions) => sessions.length
   ? sessions.map(({ opens, closes }) => `${formatTime(opens)} – ${formatTime(closes)}`).join(" & ")
   : "OFF";
 
-export const hours = openingSchedule.map(({ day, sessions }) => ({
-  day,
-  time: formatSessions(sessions),
-  off: !sessions.length,
-}));
+// A session is "Morning" if the clinic says so (session.shift, set in the dashboard) or, failing that, if it
+// opens before noon. An afternoon/evening session is always listed under Evening.
+export const isMorningSession = (session) =>
+  session.shift ? session.shift === "morning" : Number(session.opens.split(":")[0]) < 12;
 
-// Classify by start time so an afternoon/evening session is always listed under Evening.
-const shiftHours = (morning) => openingSchedule.map(({ day, sessions }) => {
-  const selected = sessions.filter(({ opens }) => (Number(opens.split(":")[0]) < 12) === morning);
-  return { day, time: formatSessions(selected), off: !selected.length };
-});
-
-export const hoursMorning = shiftHours(true);
-export const hoursEvening = shiftHours(false);
-
-const groupedHours = hours.reduce((groups, row) => {
-  const previous = groups.at(-1);
-  if (previous?.time === row.time) previous.days.push(row.day);
-  else groups.push({ days: [row.day], time: row.time, off: row.off });
-  return groups;
-}, []);
 const dayRange = (days) => days.length === 1 ? days[0] : `${days[0]}–${days.at(-1)}`;
 
-export const hoursSummary = groupedHours.map(({ days, time }) => `${dayRange(days)}: ${time}.`).join(" ");
-// Consecutive open days are joined into one range, whatever their hours (e.g. "Monday–Friday").
-const openRuns = [];
-hours.forEach(({ day, off }) => {
-  if (off) openRuns.push(null);
-  else if (openRuns.at(-1)) openRuns.at(-1).push(day);
-  else openRuns.push([day]);
-});
-export const openingDaysLabel = openRuns.filter(Boolean).map(dayRange).join(", ");
+// Everything the Home, Contact, About, Physiotherapy and Footer hours blocks show, built from one schedule.
+// The website ships with `openingSchedule` above and replaces it with the dashboard's "Website Clinic Timing"
+// at runtime (see ClinicHoursProvider), so both use this one function.
+export function buildHours(schedule) {
+  const hours = schedule.map(({ day, sessions }) => ({ day, time: formatSessions(sessions), off: !sessions.length }));
+
+  const shiftHours = (morning) => schedule.map(({ day, sessions }) => {
+    const selected = sessions.filter((session) => isMorningSession(session) === morning);
+    return { day, time: formatSessions(selected), off: !selected.length };
+  });
+
+  const groupedHours = hours.reduce((groups, row) => {
+    const previous = groups.at(-1);
+    if (previous?.time === row.time) previous.days.push(row.day);
+    else groups.push({ days: [row.day], time: row.time, off: row.off });
+    return groups;
+  }, []);
+
+  // Consecutive open days are joined into one range, whatever their hours (e.g. "Monday–Friday").
+  const openRuns = [];
+  hours.forEach(({ day, off }) => {
+    if (off) openRuns.push(null);
+    else if (openRuns.at(-1)) openRuns.at(-1).push(day);
+    else openRuns.push([day]);
+  });
+
+  return {
+    hours,
+    hoursMorning: shiftHours(true),
+    hoursEvening: shiftHours(false),
+    hoursSummary: groupedHours.map(({ days, time }) => `${dayRange(days)}: ${time}.`).join(" "),
+    openingDaysLabel: openRuns.filter(Boolean).map(dayRange).join(", "),
+  };
+}
+
+export const { hours, hoursMorning, hoursEvening, hoursSummary, openingDaysLabel } = buildHours(openingSchedule);
 
 export const services = [
+  {
+    title: "Online Medical Certificate",
+    text: "Sick, travel and return-to-work certificates online for €25. No clinic visit: pay online, a doctor calls you and your certificate is sent within 1–2 hours.",
+    icon: "FileCheck2",
+    path: "/medical-certificate",
+    linkLabel: "Get your certificate online",
+    cta: true,
+  },
+  {
+    title: "Blood Tests",
+    text: "Blood tests by online appointment, available on Fridays. Choose your time online and pay online or at the clinic. €25.",
+    icon: "Droplets",
+    path: "/book?service=blood-test",
+    linkLabel: "Book a blood test",
+    cta: true,
+  },
   {
     title: "General Practice",
     text: "Everyday GP consultations for illness, injury and ongoing health concerns, with no appointment required.",
@@ -102,7 +129,9 @@ export const services = [
     text: "Physiotherapy with Muqadas at our Claregate Street clinic. Contact reception to discuss your needs and arrange an appointment during clinic hours.",
     icon: "Activity",
     path: "/physiotherapy",
+    linkLabel: "Physiotherapy in Kildare",
   },
+  
 ];
 
 export const process = [
