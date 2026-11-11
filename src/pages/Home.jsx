@@ -193,7 +193,7 @@ export default function Home() {
             <span className="eyebrow">Online medical certificate</span>
             <h2>Need a medical certificate? Get it online, no clinic visit.</h2>
             <p>
-              Sick note, travel or return-to-work certificate for €25. Request and pay online, a doctor calls you,
+              Sick note, travel or return-to-work certificate for €30. Request and pay online, a doctor calls you,
               and your certificate is sent by email or WhatsApp within 1–2 hours.
             </p>
           </div>

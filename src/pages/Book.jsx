@@ -492,7 +492,7 @@ export default function Book() {
               <div className="bk-pay">
                 <label className={`bk-pay__opt${method === "online" ? " is-selected" : ""}`}>
                   <input type="radio" name="method" value="online" checked={method === "online"} onChange={() => setMethod("online")} />
-                  <span><CreditCard size={18} /> <strong>Pay online now</strong><small>Secure card or PayPal payment. Your appointment is confirmed once paid.</small></span>
+                  <span><CreditCard size={18} /> <strong>Pay online now</strong><small>Secure card payment. Your appointment is confirmed once paid.</small></span>
                 </label>
                 <label className={`bk-pay__opt${method === "clinic" ? " is-selected" : ""}`}>
                   <input type="radio" name="method" value="clinic" checked={method === "clinic"} onChange={() => setMethod("clinic")} />

@@ -18,7 +18,7 @@ export default function usePaymentProviders() {
       })
       .catch(() => {
         if (controller.signal.aborted) return;
-        cached = ["stripe", "paypal"];
+        cached = ["stripe"];
         setProviders(cached);
       });
     return () => controller.abort();

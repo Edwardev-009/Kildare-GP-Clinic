@@ -51,7 +51,7 @@ export default function MedicalCertificate() {
       <PageHeader
         eyebrow="Medical Certificates"
         title="Medical certificates at Kildare Clinic"
-        lede="Get a sick note, travel or return-to-work certificate online for €25. No clinic visit: request and pay online, an Irish-registered GP phones you, and your certificate is sent by email or WhatsApp within 1–2 hours."
+        lede={`Get a sick note, travel or return-to-work certificate online for €${CERTIFICATE_PRICE}. No clinic visit: request and pay online, an Irish-registered GP phones you, and your certificate is sent by email or WhatsApp within 1–2 hours.`}
       />
 
       {/* ---------- Trust strip ---------- */}
@@ -153,7 +153,7 @@ export default function MedicalCertificate() {
             </p> <br />
             <p>
               A sick certificate, an unfit-to-travel or fit-to-travel certificate and a return-to-work (fit for work)
-              certificate each cost €{CERTIFICATE_PRICE}. You pay securely online by card, Apple Pay, Google Pay or PayPal.
+              certificate each cost €{CERTIFICATE_PRICE}. You pay securely online by card, Apple Pay or Google Pay.
               If the doctor decides a certificate cannot be issued, you are refunded in full. We cannot issue
               backdated certificates.
             </p>

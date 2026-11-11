@@ -67,7 +67,7 @@ export const certificates = [
 export const certificateSteps = [
   {
     title: "Request and pay online",
-    text: "Choose your certificate, fill in a short form and pay securely by card or PayPal. There is no need to visit the clinic.",
+    text: "Choose your certificate, fill in a short form and pay securely by card. There is no need to visit the clinic.",
   },
   {
     title: "A doctor calls you",
@@ -112,7 +112,7 @@ export const certificateFaqs = [
   {
     question: "How much does an online medical certificate cost?",
     answer:
-      `Every medical certificate costs €${CERTIFICATE_PRICE}, paid online by card or PayPal when you make the request.`,
+      `Every medical certificate costs €${CERTIFICATE_PRICE}, paid online by card when you make the request.`,
   },
   {
     question: "How long does it take to get my certificate?",
@@ -132,7 +132,7 @@ export const certificateFaqs = [
   {
     question: "Is my payment secure?",
     answer:
-      "Yes. Payment is taken on the secure pages of Stripe (card, Apple Pay, Google Pay) or PayPal. Kildare Clinic never sees or stores your card details.",
+      "Yes. Payment is taken on the secure pages of Stripe (card, Apple Pay, Google Pay). Kildare Clinic never sees or stores your card details.",
   },
 ];
 

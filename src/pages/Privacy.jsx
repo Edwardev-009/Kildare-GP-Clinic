@@ -17,7 +17,7 @@ export default function Privacy() {
       />
       <section className="section">
         <div className="container cookie-policy">
-          <p className="cookie-policy__updated">Last updated: 6 November 2026</p>
+          <p className="cookie-policy__updated">Last updated: 10 November 2026</p>
 
           <section>
             <h2>Who we are</h2>
@@ -32,9 +32,9 @@ export default function Privacy() {
             <ul>
               <li><strong>Booking an appointment:</strong> your name, phone number, email address, whether you are a new or existing patient, the service, doctor and time you choose, and an optional short reason for the visit. We use this to book and manage your appointment, to contact you about it and to prepare for your visit.</li>
               <li><strong>Online medical certificate requests:</strong> your name, phone number, email address, the certificate you want, how you want it sent (email or WhatsApp) and an optional short note. A doctor uses this to call you and, if appropriate, issue your certificate.</li>
-              <li><strong>Payments:</strong> if you pay online, the payment is taken on the secure pages of Stripe or PayPal. We receive confirmation that you paid, the amount and a payment reference. We never see or store your card details.</li>
+              <li><strong>Payments:</strong> if you pay online, the payment is taken on the secure pages of Stripe. We receive confirmation that you paid, the amount and a payment reference. We never see or store your card details. If you cancel and are refunded, the refund is sent back to the card you paid with through Stripe.</li>
+              <li><strong>Emails about your booking or request:</strong> we send the email address you give us to our email provider so that we can send you your booking confirmation, receipt, cancellation and refund emails, and a notice to the clinic.</li>
               <li><strong>Contact form:</strong> the name, phone, email and message you send us, so we can reply.</li>
-              <li><strong>Security:</strong> forms may use a Cloudflare Turnstile check to stop automated abuse, which processes technical information from your browser.</li>
               <li><strong>Cookies and similar technologies:</strong> see our <Link to="/cookies">cookie information</Link>. Analytics and maps are optional and off until you allow them.</li>
             </ul>
             <p>
@@ -48,7 +48,7 @@ export default function Privacy() {
             <p>We do not sell your information. We share it only with the people and services that help us run the clinic:</p>
             <ul>
               <li>our doctors and clinic staff, through the clinic's patient-management system;</li>
-              <li>service providers that process data for us, such as website and system hosting, email delivery (including EmailJS for contact and certificate request messages), Stripe and PayPal for payments, and Cloudflare for the security check;</li>
+              <li>service providers that process data for us: Vercel for website and system hosting, MongoDB Atlas for the database that holds bookings and patient records, Resend for booking, receipt and refund emails, EmailJS for messages sent from the website forms to the clinic's inbox, and Stripe for card payments;</li>
               <li>Google, if you choose to allow analytics or the map embed (see the cookie information);</li>
               <li>WhatsApp, if you ask us to send a certificate or message by WhatsApp, or contact us there.</li>
             </ul>
@@ -69,7 +69,7 @@ export default function Privacy() {
             <p>
               You can ask us for a copy of your personal information, to correct it, to delete it where the law allows,
               to restrict or object to how we use it, and to receive it in a portable form. Where we rely on your
-              agreement, you can withdraw it at any time. To use any of these rights, contact us using the details above.
+              agreement, you can withdraw it at any time. To use any of these rights, contact us using the details above. We will reply within one month.
             </p>
             <p>
               If you are unhappy with how we handle your information, you can complain to the Data Protection

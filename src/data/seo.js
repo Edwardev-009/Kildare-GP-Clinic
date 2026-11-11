@@ -46,8 +46,8 @@ export const pages = [
   {
     path: "/medical-certificate",
     label: "Medical Certificate",
-    title: "Online Medical Certificate Ireland – Sick Note Online €25",
-    description: "Get a medical certificate online in Ireland for €25. Sick, travel and return-to-work certificates from Irish-registered GPs, no clinic visit needed. Pay online, a doctor calls you, certificate sent within 1–2 hours.",
+    title: "Online Medical Certificate Ireland – Sick Note Online €30",
+    description: "Get a medical certificate online in Ireland for €30. Sick, travel and return-to-work certificates from Irish-registered GPs, no clinic visit needed. Pay online, a doctor calls you, certificate sent within 1–2 hours.",
     type: "WebPage",
   },
   {

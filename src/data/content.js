@@ -90,7 +90,7 @@ export const { hours, hoursMorning, hoursEvening, hoursSummary, openingDaysLabel
 export const services = [
   {
     title: "Online Medical Certificate",
-    text: "Sick, travel and return-to-work certificates online for €25. No clinic visit: pay online, a doctor calls you and your certificate is sent within 1–2 hours.",
+    text: "Sick, travel and return-to-work certificates online for €30. No clinic visit: pay online, a doctor calls you and your certificate is sent within 1–2 hours.",
     icon: "FileCheck2",
     path: "/medical-certificate",
     linkLabel: "Get your certificate online",
@@ -98,7 +98,7 @@ export const services = [
   },
   {
     title: "Blood Tests",
-    text: "Blood tests by online appointment, available on Fridays. Choose your time online and pay online or at the clinic. €25.",
+    text: "Blood tests by online appointment, available on Fridays. Choose your time online and pay online or at the clinic. €50.",
     icon: "Droplets",
     path: "/book?service=blood-test",
     linkLabel: "Book a blood test",
